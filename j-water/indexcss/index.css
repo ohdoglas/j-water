@@ -1,9 +1,11 @@
+/* !Corpo do Site */
 body {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     background-color: rgb(55, 111, 175);
     color : rgb(255, 255, 255)
 }
 
+/* !Escopo de links */
 ul {
     display: flex;
     justify-content: space-between;
@@ -11,8 +13,30 @@ ul {
     align-items: center;
     padding: 16px;
 }
-
+/* !Links */
 a {
     text-decoration: none;
     color : rgb(255, 255, 255)
+}
+/* !Imagem do Header */
+header img {
+    border: 5px solid whitesmoke;
+}
+/* !Class do Header */
+.center {
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+/* !Titulo */
+h1 {
+    text-align: center;
+    color:rgb(255, 255, 255)
+}
+/* !Texto Principal */
+main {
+    text-align: center;
+}
+
+footer {
+    text-align: center;
 }
