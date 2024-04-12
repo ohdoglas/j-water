@@ -1,8 +1,14 @@
 /* !Corpo do Site */
+*{
+    margin: 0;
+    padding: 0;
+}
 body {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     background-color: rgb(55, 111, 175);
-    color : rgb(255, 255, 255)
+    color : rgb(255, 255, 255);
+    margin-left: 15%;
+    margin-right: 15%;
 }
 
 /* !Escopo de links */
@@ -30,13 +36,22 @@ header img {
 /* !Titulo */
 h1 {
     text-align: center;
-    color:rgb(255, 255, 255)
+    color:rgb(255, 255, 255);
+    margin-top: 30px;
 }
 /* !Texto Principal */
 main {
     text-align: center;
+    margin-top: 30px;
 }
 
 footer {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
 }
+
+.footerimage {
+    align-items: center;
+}
+

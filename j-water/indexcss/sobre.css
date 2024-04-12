@@ -1,7 +1,9 @@
 body {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     background-color: rgb(55, 111, 175);
-    color : rgb(255, 255, 255)
+    color : rgb(255, 255, 255);
+    margin-left: 15%;
+    margin-right: 15%;
 }
 
 ul {
@@ -18,5 +20,15 @@ a {
 }
 
 main {
+    text-align: center;
+}
+footer{
+    display: flex;
+    justify-content: center;
+    margin-top: 75px;
+}
+
+
+footer img {
     text-align: center;
 }

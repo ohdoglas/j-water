@@ -1,7 +1,10 @@
 body {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     background-color: rgb(55, 111, 175);
-    color : rgb(255, 255, 255)
+    color : rgb(255, 255, 255);
+    margin-left: 15%;
+    margin-right: 15%;
+
 }
 
 ul {
@@ -19,4 +22,67 @@ a {
 
 main {
     text-align: center;
+}
+
+footer{
+    display: flex;
+    justify-content: center;
+}
+
+
+footer img {
+    text-align: center;
+    margin-top: 100px;
+}
+
+/* !Botão J-Water */
+.jwater-button {
+    list-style: none;
+    align-items: center;
+}
+
+.button-cta {
+    font-size: large;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    height: 50px;
+    background-color: rgb(0, 47, 255);
+    color: blanchedalmond;
+}
+
+/* !Formuláro */
+
+h4 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+}
+
+form {
+    font-size: large;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+div {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+input {
+    border-radius: 10px;
+}
+
+.nivelatividade {
+    text-align: center;
+    font-size: small;
+    font-size: 18px;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    border-style: solid;
+}
+
+.number {
+    text-align: justify;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 20px;
+    margin-bottom: 25px;
 }

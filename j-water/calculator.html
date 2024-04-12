@@ -6,6 +6,43 @@
     <title>Calculadora J-Water</title>
     <link rel="stylesheet" href="./indexcss/calculator.css">
 </head>
+
+<!-- !calculoJwater -->
+<script type="text/javascript">
+
+    const waterCon = () => {
+
+    const peso = document.Jwater.elements["peso"].value;
+    const altura = document.Jwater.elements["altura"].value;
+    const idade = document.Jwater.elements["idade"].value;
+
+
+    const tmbh = 88.362 + (13.397 * peso) + (4.799 * altura) - (5.677 * idade)
+    const tmbm = 447.593 + (9.247 * peso) + (3.098 * altura) - (4.330 * idade)
+
+    let nivelatividade = document.Jwater.elements["nivelatividade"].value
+
+    let quantidadeCreatina = document.Jwater.elements["creatina"].value * 500
+
+
+
+    const genero = document.forms["Jwater"]["sexo"]
+    if(genero[0].checked==false&&genero[1].checked==false){
+        alert("Escolha o gênero!")
+    } else if(genero[0].checked==true&&genero[1].checked==false){
+        aguaHomem = tmbh * nivelatividade + quantidadeCreatina
+        alert(aguaHomem)
+    } else if(genero[0].checked==false&&genero[1].checked==true){
+        aguaMulher = tmbm * nivelatividade + quantidadeCreatina
+        alert(aguaMulher)
+    }
+
+}
+
+
+</script>
+
+<!-- !corpo da pagina -->
 <body>
     <body>
         <nav>
@@ -24,5 +61,64 @@
                 </li>
             </ul>
         </nav>
+        <!-- !formulário -->
+        <form id="Jwater" name="Jwater" action="#" required>
+            <fieldset class="campo">
+                <div class="genero">
+                    <h4>Adicione as informações abaixo e deixe o resto com o J-Water</h4>
+
+<!-- !genero -->
+                    <label>
+                        Qual o seu sexo?
+                        <input type="radio" name="sexo" id="m" value="male"/>Masculino
+                    </label>
+                    <label>
+                        <input type="radio" name="sexo" id="f" value="female">Feminino
+                    </label>
+                </div>
+<!-- !idade -->
+                <div class="number">
+                    <label for="idade">Idade</label>
+                    <input type="text" name="idade" id="idade" value="0" aria-valuemax="120" aria-valuemin="1" required>
+                </div>
+<!-- !altura -->
+                <div class="number">
+                    <label for="altura">Altura</label>
+                    <input type="text" name="altura" id="altura" value="0" aria-valuemax="280" aria-valuemin="1" required>
+                </div>
+<!-- !peso -->
+                <div class="number">
+                    <label for="peso">Peso</label>
+                    <input type="text" name="peso" id="peso" value="0" aria-valuemax="500" aria-valuemin="1" required>
+                </div>
+
+<!-- !nivelatividade -->
+    <div class="nivelatividade">
+        Qual o seu nível de atividade?
+        <input type="radio" name="nivelatividade" id="nivelatividade" value="1.2">Sedentário
+        <input type="radio" name="nivelatividade" id="nivelatividade" value="1.375">Levemente ativo
+        <input type="radio" name="nivelatividade" id="nivelatividade" value="1.55">Moderadamente ativo
+        <input type="radio" name="nivelatividade" id="nivelatividade" value="1.725">Muito ativo
+        <input type="radio" name="nivelatividade" id="nivelatividade" value="1.9">Extremamente ativo
+        </div>
+<!-- !creatina -->
+        <div class="number">
+            <label for="creatina">Quanto de creatina você ingere por dia?</label>
+            <input type="text" name="creatina" id="creatina" value="0" required>
+        </div>
+
+
+            </fieldset>
+        </form>
+
+
+        <!-- !botão jwater -->
+        <main class="jwater-button">
+            <button type="submit" id="button" class="button-cta" onclick="waterCon()">J-Water</button>
+        </main>
+
+        <footer>
+            <img src="/jwater.png" alt="">
+        </footer>
 </body>
 </html>
