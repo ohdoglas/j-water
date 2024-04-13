@@ -24,18 +24,25 @@
 
     let quantidadeCreatina = document.Jwater.elements["creatina"].value * 500
 
+        let result
+
 
 
     const genero = document.forms["Jwater"]["sexo"]
     if(genero[0].checked==false&&genero[1].checked==false){
-        alert("Escolha o gênero!")
+        alert("Insira todos os dados para o calculo!")
+
     } else if(genero[0].checked==true&&genero[1].checked==false){
         aguaHomem = tmbh * nivelatividade + quantidadeCreatina
-        alert(aguaHomem)
+        result = aguaHomem
+
     } else if(genero[0].checked==false&&genero[1].checked==true){
         aguaMulher = tmbm * nivelatividade + quantidadeCreatina
-        alert(aguaMulher)
+        result = aguaMulher
     }
+
+    document.getElementById("result").innerHTML = ("Você deve ingerir diariamente um minímo de: " + parseInt(result) + " ml de água.");
+
 
 }
 
@@ -62,7 +69,7 @@
             </ul>
         </nav>
         <!-- !formulário -->
-        <form id="Jwater" name="Jwater" action="#" required>
+        <form id="Jwater" name="Jwater" action="#">
             <fieldset class="campo">
                 <div class="genero">
                     <h4>Adicione as informações abaixo e deixe o resto com o J-Water</h4>
@@ -70,10 +77,10 @@
 <!-- !genero -->
                     <label>
                         Qual o seu sexo?
-                        <input type="radio" name="sexo" id="m" value="male"/>Masculino
+                        <input type="radio" name="sexo" id="m" value="male" required>Masculino
                     </label>
                     <label>
-                        <input type="radio" name="sexo" id="f" value="female">Feminino
+                        <input type="radio" name="sexo" id="f" value="female" required>Feminino
                     </label>
                 </div>
 <!-- !idade -->
@@ -110,6 +117,13 @@
 
             </fieldset>
         </form>
+        <div class="msg">
+            <label id="msg"></label>
+        </div>
+
+        <div class="result">
+            <label  id="result"></label>
+        </div>
 
 
         <!-- !botão jwater -->
@@ -118,7 +132,7 @@
         </main>
 
         <footer>
-            <img src="/jwater.png" alt="">
+            <img src="/jwater.png" alt="" >
         </footer>
 </body>
 </html>
