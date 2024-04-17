@@ -1,5 +1,5 @@
 A Water of Life: J-Water
-
+´Para mais detalhes e como executar utilize a Branch: Develop`
 
 O intuito do J-Water é ser uma ferramente de calculo de consumo de água diária de acordo com parametros individuais de cada individuo.
 
