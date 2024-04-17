@@ -17,7 +17,8 @@ ul {
     justify-content: space-between;
     list-style: none;
     align-items: center;
-    padding: 16px;
+    margin-right: 60px;
+    padding: 18px;
 }
 /* !Links */
 a {

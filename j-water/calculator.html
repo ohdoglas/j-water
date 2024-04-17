@@ -92,22 +92,33 @@
 <!-- !idade -->
                 <div class="number">
                     <label for="idade">Idade</label>
+                    <div></div>
                     <input type="text" name="number" id="idade" value="0" aria-valuemax="120" aria-valuemin="1" required>
                 </div>
 <!-- !altura -->
                 <div class="number">
-                    <label for="altura">Altura</label>
+                    <label for="altura">Altura (sem ponto ou vírgula)</label>
+                    <div></div>
                     <input type="text" name="number" id="altura" value="0" aria-valuemax="280" aria-valuemin="1" required>
                 </div>
 <!-- !peso -->
                 <div class="number">
                     <label for="peso">Peso</label>
+                    <div></div>
                     <input type="text" name="number" id="peso" value="0" aria-valuemax="500" aria-valuemin="1" required>
                 </div>
 
 <!-- !nivelatividade -->
     <div class="nivelatividade">
         Qual o seu nível de atividade?
+        <div class="niveisAt">Como saber meu nível de atividade?
+            <p>Sedentário: Não pratica atividade física regular.</p>
+               <p>Levemente ativo: Atividades domésticas, prática de exercícios leves de 2-4 vezes por semana. </p>
+               <p>Moderadamente ativo: Atividade física regular: corrida, ciclismo ou natação por pelo menos 5 dias por semana.</p>
+               <p>Muito ativo: Atividades fisica vigorosa por pelo menos 6 dias na semana.</p>
+               <p>Extremamente ativo: Atividade física intensa. Atletas e fisiculturistas. Pessoas com empregos fisicamente exigentes que também se exercitam fora do trabalho. </p>
+            
+        </div>
         <input type="radio" name="nivelatividade" id="nivelatividade" value="1.2">Sedentário
         <input type="radio" name="nivelatividade" id="nivelatividade" value="1.375">Levemente ativo
         <input type="radio" name="nivelatividade" id="nivelatividade" value="1.55">Moderadamente ativo
