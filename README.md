@@ -1,8 +1,61 @@
-A Water of Life: J-Water
 
-`Para mais detalhes e como executar utilize a Branch: Develop`
+# J-Water.js
 
-O intuito do J-Water é ser uma ferramente de calculo de consumo de água diária de acordo com parametros individuais de cada individuo.
+J-Water.js is a web-based calculator that determines the minimum daily water intake a person needs. It uses a variety of personal data and mathematical equations to provide an accurate estimate tailored to individual requirements.
 
-O J-Water se baseia em métodos precisos e científicos para determinar a ingestão diária de água do indivíduo considerando a equação ENA.
-O J-Water também usa outros parametros como TMB multiplicado pelo fator de atividade física do individuo considerando também sexo, idade, altura e peso.
+## Features
+
+- Calculates daily water intake based on:
+  - Basal metabolic rate (BMR)
+  - Physical activity rate
+  - Age
+  - Height
+  - Weight
+  - Sex
+  - Creatine intake
+- User-friendly interface
+
+## Demo
+
+You can try the live demo [here](https://j-water.netlify.app/calculator).
+
+## Installation
+
+To run this project locally, clone the repository:
+
+```bash
+git clone https://github.com/ohdoglas/j-water.git
+```
+
+Navigate to the project directory:
+
+```bash
+cd j-water
+```
+
+Open the `index.html` file in your browser to view the calculator.
+
+## Usage
+
+1. Enter your personal data in the input fields.
+2. Click the "Calculate" button.
+3. View your recommended daily water intake.
+
+## Technologies Used
+
+- **HTML**: For structuring the web page.
+- **CSS**: For styling the user interface.
+- **JavaScript**: For implementing the calculation logic.
+
+## Contributing
+
+Contributions are welcome! Please see the [CONTRIBUTING.md](CONTRIBUTING.md) file for more details.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+For any inquiries or feedback, please reach out to [dughlaisdd@gmail.com].
+```
