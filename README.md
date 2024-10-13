@@ -18,6 +18,7 @@ J-Water.js is a web-based calculator that determines the minimum daily water int
 ## Demo
 
 You can try the live demo [here](https://j-water.netlify.app/calculator).
+See the J-Water repository made in Delphi, download and use it as you wish [here](https://github.com/ohdoglas/jwater-delphi)
 
 ## Installation
 
