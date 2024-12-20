@@ -1,0 +1,62 @@
+@import url(../reset.css);
+@import url(../global.css);
+@import url(../variables.css);
+
+.main_header {
+    padding: 5px;
+    background-color: var(--detailColor);
+}
+
+.header_nav {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.header_nav_buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.header_nav_buttons button {
+    background-color: var(--detailColor);
+    color: var(--fontColor);
+
+    padding: 16px;
+    margin: 8px;
+
+    border-bottom: 5px solid var(--borderButtons);
+    border-right: 5px solid var(--borderButtons);
+}
+
+.header_nav_buttons button:hover {
+
+
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+.header_nav_logo {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    position: absolute;
+    top: 15px;
+
+}
+
+.header_nav_logo img {
+    width: 150px;
+}
+
+.header_nav_logo img:hover {
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}

@@ -1,9 +1,9 @@
 @import url(./variables.css);
 
 body, button, select, textarea {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: "Geist Mono", serif;
     font-size: large;
-    font-weight: 400;
+    font-weight: 600;
     font-style: normal;
 }
 

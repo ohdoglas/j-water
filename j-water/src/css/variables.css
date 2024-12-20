@@ -1,6 +1,8 @@
 :root {
     --baseColor: rgb(55, 111, 175);
     --detailColor: #21248A;
+    --detailColorV: rgb(123, 182, 250);
     --hoverColor: #232af5;
     --fontColor: white;
+    --borderButtons: #797BB8
 }

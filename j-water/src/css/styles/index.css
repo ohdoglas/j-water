@@ -2,46 +2,79 @@
 @import url(../global.css);
 @import url(../variables.css);
 
-
-
-
-/* !Corpo do Site */
-body {
-    color : rgb(255, 255, 255)
+.main_content div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
-/* !Escopo de links */
-ul {
-    display: flex;
-    justify-content: space-between;
-    list-style: none;
-    align-items: center;
+.main_content div h1 {
     padding: 16px;
 }
-/* !Links */
-a {
-    text-decoration: none;
-    color : rgb(255, 255, 255)
-}
-/* !Imagem do Header */
-header img {
-    border: 5px solid whitesmoke;
-}
-/* !Class do Header */
-.center {
-    text-align: center;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
-/* !Titulo */
-h1 {
-    text-align: center;
-    color:rgb(255, 255, 255)
-}
-/* !Texto Principal */
-main {
-    text-align: center;
+
+.main_content div p {
+    padding: 32px;
+
+    width: 1000px;
 }
 
-footer {
-    text-align: center;
+.main_footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: var(--detailColor);
+
+    padding: 48px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.footer_icon_right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.footer_icon_left {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.footer_icon_right a img {
+    padding: 0px;
+    margin: 0px;
+    width: 64px;
+}
+
+.footer_icon_left a img {
+    padding: 0px;
+    margin: 0px;
+    width: 64px;
+}
+
+.footer_icon_right a img:hover {
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+.footer_icon_left a img:hover {
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+.footer_center a img {
+    width: 128px;
 }
