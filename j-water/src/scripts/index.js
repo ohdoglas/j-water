@@ -1,11 +1,15 @@
 import WaterCalculator from "./models/waterCalculator.js";
 
+
 document.getElementById("jbutton").addEventListener("click", (event) => {
     event.preventDefault();
     jWater();
 });
 
+
+
 export default function jWater() {
+    const formResult = document.getElementById("result_h1");
 
     const data = {
         gender: document.querySelector('input[name="gender"]:checked').value,
@@ -18,7 +22,9 @@ export default function jWater() {
 
     const result = new WaterCalculator(data);
     const dailyWater = result.calculate(data)
-    console.log(dailyWater)
+
+    formResult.classList.add("form_result_h1");
+    formResult.textContent = `Você deve ingerir diariamente ${parseInt(dailyWater)} ml de Água`;
 }
 
 

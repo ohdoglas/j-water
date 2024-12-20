@@ -3,7 +3,6 @@
 @import url(../variables.css);
 @import url(../../css/components/header.css);
 
-
 .main_calculator {
     display: flex;
     flex-direction: column;
@@ -24,6 +23,27 @@
 .main_calculator input {
     padding: 8px;
     margin: 16px;
+}
+
+.form_result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form_result_h1 {
+    width: 450px;
+    background-color: #21248A;
+    color: #FFFFFF;
+    border-bottom: 5px solid #797BB8;
+    border-right: 5px solid #797BB8;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.form_result_h1:hover {
+    opacity: 0.8;
+    transform: scale(1.1);
 }
 
 .button_jwater {
