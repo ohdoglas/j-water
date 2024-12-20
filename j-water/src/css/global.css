@@ -1,8 +1,7 @@
 @import url(./variables.css);
 
-body, button, select, textarea {
-    font-family: "Geist Mono", serif;
-    font-size: large;
+body, button, select, textarea, input {
+    font-family: "Tomorrow", serif;
     font-weight: 600;
     font-style: normal;
 }

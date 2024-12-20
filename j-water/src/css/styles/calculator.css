@@ -1,22 +1,46 @@
-body {
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    background-color: rgb(55, 111, 175);
-    color : rgb(255, 255, 255)
+@import url(../reset.css);
+@import url(../global.css);
+@import url(../variables.css);
+@import url(../../css/components/header.css);
+
+
+.main_calculator {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    padding: 128px;
+
 }
 
-ul {
-    display: flex;
-    justify-content: space-between;
-    list-style: none;
-    align-items: center;
+.main_calculator section {
+    padding: 16px;
+
+    border: 5px solid var(--borderButtons);
+}
+
+.main_calculator input {
+    padding: 8px;
+    margin: 16px;
+}
+
+.button_jwater {
+    background-color: var(--detailColor);
+    color: var(--fontColor);
+    text-decoration: none;
+    border-bottom: 5px solid var(--borderButtons);
+    border-right: 5px solid var(--borderButtons);
+    font-size: 16px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+
+    margin-top: 32px;
     padding: 16px;
 }
 
-a {
-    text-decoration: none;
-    color : rgb(255, 255, 255)
-}
-
-main {
-    text-align: center;
+.button_jwater:hover {
+    opacity: 0.8;
+    transform: scale(1.1);
 }

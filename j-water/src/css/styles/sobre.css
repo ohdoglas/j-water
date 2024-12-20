@@ -1,22 +1,23 @@
-body {
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    background-color: rgb(55, 111, 175);
-    color : rgb(255, 255, 255)
+@import url(../reset.css);
+@import url(../global.css);
+@import url(../variables.css);
+@import url(../../css/components/header.css);
+
+
+.main_content div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
-ul {
-    display: flex;
-    justify-content: space-between;
-    list-style: none;
-    align-items: center;
+.main_content div h1 {
     padding: 16px;
 }
 
-a {
-    text-decoration: none;
-    color : rgb(255, 255, 255)
-}
+.main_content div p {
+    padding: 32px;
 
-main {
-    text-align: center;
+    width: 1000px;
 }

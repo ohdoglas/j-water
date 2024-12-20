@@ -4,25 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora J-Water</title>
-    <link rel="stylesheet" href="./indexcss/calculator.css">
+    <link rel="stylesheet" href="../css/styles/calculator.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tomorrow:wght@500;600;900&display=swap" rel="stylesheet">
 </head>
-<body>
     <body>
-        <nav>
-            <ul>
-                <li>
-                    <a href="sobre.html"> Sobre Hidratação
+        <header class="main_header">
+            <nav class="header_nav">
+                <header class="header_nav_logo">
+                    <a href="../../src/index.html">
+                        <img src="../../src/assets/logo/jwater.png" alt="j-water logo">
                     </a>
-                </li>
-                <li>
-                    <a href="index.html">Voltar
+                </header>
+                <div class="header_nav_buttons">
+                    <a href="../pages/calculator.html">
+                            CALCULADORA
                     </a>
-                </li>
-                <li>
-                    <a href="https://github.com/ohdoglas/j-water" target="_blank" rel="noopener noreferrer">Github
+                    <a href="../pages/sobre.html">
+                            SOBRE HIDRATAÇÃO
                     </a>
-                </li>
-            </ul>
-        </nav>
-</body>
+                </div>
+            </nav>
+        </header>
+        <main class="main_calculator">
+            <form action="" class="calculator_form">
+                <section>
+                    <label for="m">
+                        Qual o seu Sexo? <br>
+                        <input type="radio" name="gender" id="m" value="male" required>Masculino
+                    </label>
+                    <label for="f">
+                        <input type="radio" name="gender" id="f" value="female" required>Feminino
+                    </label> <br>
+                    <label for="age">
+                        Idade <br>
+                        <input type="number" name="age" id="age" value="0" aria-valuemax="120" aria-valuemin="1" required>
+                    </label> <br>
+                    <label for="height">
+                        Altura (cm) <br>
+                        <input type="number" name="height" id="height" value="0" aria-valuemax="280" aria-valuemin="1" required>
+                    </label> <br>
+                    <label for="weight">
+                        Peso (kg)<br>
+                        <input type="number" name="weight" id="weight" value="0" aria-valuemax="500" aria-valuemin="1" required>
+                    </label>
+                </section>
+                <section>
+                        <h4>Qual o seu nível de atividade?</h4>
+                            <p>Sedentário: Não pratica atividade física regular.</p>
+                            <p>Levemente ativo: Atividades domésticas, prática de exercícios leves de 2-4 vezes por semana. </p>
+                            <p>Moderadamente ativo: Atividade física regular: corrida, ciclismo ou natação por pelo menos 5 dias por semana.</p>
+                            <p>Muito ativo: Atividades fisica vigorosa por pelo menos 6 dias na semana.</p>
+                            <p>Extremamente ativo: Atividade física intensa. Atletas e fisiculturistas. Pessoas com empregos fisicamente exigentes que também se exercitam fora do trabalho. </p>
+                    <div class="activity_level">
+                        <input type="radio" name="activity" id="activity" value="1.2">Sedentário
+                        <input type="radio" name="activity" id="activity" value="1.375">Levemente ativo
+                        <input type="radio" name="activity" id="activity" value="1.55">Moderadamente ativo
+                        <input type="radio" name="activity" id="activity" value="1.725">Muito ativo
+                        <input type="radio" name="activity" id="activity" value="1.9">Extremamente ativo
+                    </div>
+                </section>
+                <section>
+                    <label for="creatine">
+                        Quanto de creatina você consome por dia? <br>
+                        <input type="number" name="creatine" id="creatine" value="0" required>
+                    </label>
+                </section>
+
+                    <button class="button_jwater" id="jbutton">J-WATER</button>
+            </form>
+        </main>
+    </body>
 </html>
