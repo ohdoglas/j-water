@@ -3,6 +3,13 @@
 @import url(../variables.css);
 @import url(../../css/components/header.css);
 
+body {
+    overflow-y: hidden;
+}
+
+.main_content {
+    height: 100%;
+}
 
 .main_content div {
     display: flex;
@@ -12,7 +19,6 @@
     text-align: center;
 
     padding: 128px;
-
 }
 
 .main_content div h1 {
@@ -34,7 +40,8 @@
 
     padding: 48px;
     width: 100%;
-    position: fixed;
+    height: 100%;
+    /* position: fixed; */
     bottom: 0;
     left: 0;
     z-index: 1000;
@@ -44,12 +51,16 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
+
+    text-align: center;
 }
 
 .footer_icon_left {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+
+    text-align: center;
 }
 
 .footer_icon_right a img {
@@ -80,6 +91,90 @@
     transition: transform 0.3s ease;
 }
 
+.footer_center {
+    display: flex;
+    flex-direction: column;
+    width: 128px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 .footer_center a img {
     width: 128px;
+}
+
+.footer_center a img:hover {
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+.repository_text {
+    padding: 8px;
+}
+
+@media (max-width: 768px) {
+    body {
+        overflow-y: visible;
+    }
+
+    .main_content div {
+        padding: 64px
+    }
+
+    .main_content div p {
+        padding: 16px;
+        width: auto;
+    }
+
+    .main_footer {
+        flex-direction: column;
+        gap: 16px;
+        padding: 24px;
+        height: 100px;
+        bottom: 0;
+        flex-wrap: wrap;
+    }
+
+    .footer_center a img {
+        width: 100px;
+    }
+
+    .repository_text {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        overflow-y: visible;
+    }
+
+    .main_content {
+        font-size: 24px;
+    }
+
+    .main_content div h1 {
+        font-size: 24px;
+    }
+
+    .main_content div p {
+        font-size: 14px;
+    }
+
+    .main_footer {
+        gap: 8px;
+        padding: 16px;
+    }
+
+    .footer_center a img {
+        width: 80px;
+    }
+
+    .repository_text {
+        display: none;
+    }
 }

@@ -4,12 +4,17 @@
 @import url(../../css/components/header.css);
 
 
+.main_content {
+    padding: 16px;
+}
+
 .main_content div {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    gap: 16px;
 }
 
 .main_content div h1 {
@@ -17,7 +22,25 @@
 }
 
 .main_content div p {
-    padding: 32px;
-
+    padding: 16px;
+    max-width: 100%;
     width: 1000px;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .main_content div p {
+        padding: 12px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main_content div {
+        gap: 12px;
+    }
+
+    .main_content div p {
+        font-size: 14px;
+    }
 }

@@ -4,8 +4,6 @@
   "description": "Calculadora para calculo de água necessária diária",
   "main": "index.js",
   "scripts": {
-    "start": "node dist/index.js",
-    "build": "tsc"
   },
   "keywords": [
     "jwater",

@@ -1,17 +1,14 @@
 import WaterCalculator from "./models/waterCalculator.js";
 
-
 document.getElementById("activity_level_text").addEventListener("click", (event) => {
     event.preventDefault();
     showTips();
 })
 
-
 document.getElementById("jbutton").addEventListener("click", (event) => {
     event.preventDefault();
     jWater();
 });
-
 
 function jWater() {
     const formResult = document.getElementById("result_h1");
@@ -62,9 +59,3 @@ function showTips() {
 
     button.style.display = "none";
 }
-
-
-
-
-
-
