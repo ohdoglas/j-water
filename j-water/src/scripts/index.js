@@ -32,7 +32,7 @@ function jWater() {
     const dailyWater = result.calculate(data)
 
     formResult.classList.add("form_result_h1");
-    formResult.textContent = `Você deve ingerir diariamente ${parseInt(dailyWater)} ml de Água`;
+    formResult.innerHTML = `Você deve ingerir um valor minímo diário de: <br>${parseInt(dailyWater)} ml de Água`;
 }
 
 function showTips() {
