@@ -4,7 +4,6 @@
   "description": "Calculadora para calculo de água necessária diária",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "jwater",
@@ -14,6 +13,7 @@
   "author": "Doglas M.",
   "license": "ISC",
   "dependencies": {
-    "chart.js": "^4.4.2"
+  },
+  "devDependencies": {
   }
 }

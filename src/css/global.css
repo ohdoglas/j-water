@@ -1,0 +1,17 @@
+@import url(./variables.css);
+
+body, button, select, textarea, input {
+    font-family: "Tomorrow", serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+button {
+    border: none;
+    border-radius: 4px;
+}
+
+body {
+    background-color: var(--baseColor);
+    color : var(--fontColor);
+}

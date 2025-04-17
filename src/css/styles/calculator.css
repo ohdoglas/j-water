@@ -1,0 +1,181 @@
+@import url(../reset.css);
+@import url(../global.css);
+@import url(../variables.css);
+@import url(../../css/components/header.css);
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.main_calculator {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    padding: 48px;
+}
+
+.main_img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100vh;
+
+    background-image: url('../../assets/img/main.png');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    opacity: 0.7;
+}
+
+
+.main_calculator section {
+    padding: 16px;
+    background-color: var(--baseColor-50);
+
+    border: 5px solid var(--borderButtons);
+}
+
+.main_calculator input {
+    padding: 8px;
+    margin: 16px;
+}
+
+#activity_level_text {
+    background-color: var(--detailColor);
+    color: var(--fontColor);
+    border-bottom: 5px solid var(--borderButtons);
+    border-right: 5px solid var(--borderButtons);
+
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+#activity_level_text:hover {
+    opacity: 0.8;
+    transform: scale(1.1);
+}
+
+.activity_text_new {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.activity_text_new p {
+    margin: 8px;
+    width: 600px;
+}
+
+.form_result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form_result_h1 {
+    width: 450px;
+    background-color: var(--detailColor);
+    color: var(--fontColor);
+    border-bottom: 5px solid var(--borderButtons);
+    border-right: 5px solid var(--borderButtons);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.form_result_h1:hover {
+    opacity: 0.8;
+    transform: scale(1.1);
+}
+
+.button_jwater {
+    background-color: var(--detailColor);
+    color: var(--fontColor);
+    text-decoration: none;
+    border-bottom: 5px solid var(--borderButtons);
+    border-right: 5px solid var(--borderButtons);
+    font-size: 16px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+
+    margin-top: 32px;
+    padding: 16px;
+}
+
+.button_jwater:hover {
+    opacity: 0.8;
+    transform: scale(1.1);
+}
+
+
+@media (max-width: 1024px) {
+    .main_calculator {
+        padding: 32px;
+    }
+
+    .main_calculator section {
+        max-width: 700px;
+    }
+
+    .activity_text_new p {
+        width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    .main_calculator {
+        padding: 16px;
+    }
+
+    .main_calculator section {
+        padding: 12px;
+        max-width: 100%;
+    }
+
+    .main_calculator input {
+        margin: 8px 0;
+        width: 100%;
+    }
+
+    .activity_text_new p {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .button_jwater {
+        font-size: 14px;
+        padding: 12px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main_calculator {
+        padding: 8px;
+    }
+
+    .main_calculator section {
+        padding: 8px;
+    }
+
+    .activity_text_new p {
+        font-size: 12px;
+    }
+
+    .form_result h1 {
+        font-size: 16px;
+    }
+
+    .button_jwater {
+        font-size: 12px;
+        padding: 10px 12px;
+    }
+}

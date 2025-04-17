@@ -1,0 +1,9 @@
+:root {
+    --baseColor: rgb(55, 111, 175);
+    --detailColor: rgb(33, 36, 138);
+    --detailColorV: rgb(123, 182, 250);
+    --hoverColor: #232af5;
+    --fontColor: #ffffff;
+    --borderButtons: #797BB8;
+    --baseColor-50: rgba(33, 36, 138, 0.5);
+}
