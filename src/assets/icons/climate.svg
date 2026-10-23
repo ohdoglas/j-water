@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" role="img" aria-labelledby="title">
+  <title id="title">Clima e calor</title>
+  <circle cx="17" cy="7" r="3"/>
+  <path d="M17 1v1M17 12v1M11 7h1M22 7h1M13 3l.7.7M20.3 10.3l.7.7M21 3l-.7.7M13.7 10.3l-.7.7M3 16c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/>
+</svg>

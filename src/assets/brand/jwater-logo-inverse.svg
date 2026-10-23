@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 510 136" role="img" aria-labelledby="logo-title">
+  <title id="logo-title">J-WATER</title>
+  <g transform="translate(8 8)">
+    <path fill="#FFFFFF" d="M56 4C43 25 12 55 12 82a44 44 0 0 0 88 0C100 55 69 25 56 4Z"/>
+    <path fill="#09B7B3" d="M18 72c12-9 23-9 36 0s24 9 40 0v15a38 38 0 0 1-76 0V72Z"/>
+    <path fill="#0B2545" d="M18 72c12-9 23-9 36 0s24 9 40 0v8c-16 9-28 8-40 0s-24-9-36 0v-8Z"/>
+  </g>
+  <text x="132" y="91" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="68" font-weight="800" letter-spacing="-3">J-WATER</text>
+</svg>

@@ -1,64 +1,88 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>J-Water</title>
-    <link rel="stylesheet" href="./css/styles/index.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tomorrow:wght@500;600;900&display=swap" rel="stylesheet">
-</head>
-<body>
-    <div class="wrapper">
-        <header class="main_header">
-            <nav class="header_nav">
-                <header class="header_nav_logo">
-                    <a href="#">
-                        <img src="./assets/logo/jwater.png" alt="j-water logo">
-                    </a>
-                </header>
-                <div class="header_nav_buttons">
-                    <a href="./pages/calculator.html">
-                        CALCULADORA
-                    </a>
-                    <a href="./pages/sobre.html">
-                        SOBRE HIDRATAÇÃO
-                    </a>
-                </div>
-            </nav>
-        </header>
-        <main class="main_content">
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Conheça o J-WATER: uma ferramenta simples para explorar uma referência geral de ingestão diária de água."
+    />
+    <meta name="theme-color" content="#f4fbfc" />
+    <title>J-WATER — Hidratação com clareza</title>
+    <link rel="icon" type="image/svg+xml" href="./assets/brand/jwater-symbol.svg" />
+    <link rel="stylesheet" href="./css/styles/index.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <div class="page-shell">
+      <header class="site-header">
+        <nav class="site-nav" aria-label="Navegação principal">
+          <a class="brand-link" href="./index.html" aria-label="J-WATER, página inicial">
+            <img src="./assets/brand/jwater-logo.svg" alt="J-WATER" width="170" height="46" />
+          </a>
+          <div class="nav-links">
+            <a href="./pages/sobre.html">Hidratação</a>
+            <a class="nav-cta" href="./pages/calculator.html">Abrir calculadora <span aria-hidden="true">↗</span></a>
+          </div>
+        </nav>
+      </header>
 
+      <main id="conteudo">
+        <section class="hero content-width" aria-labelledby="hero-title">
+          <div class="hero-copy">
+            <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> Um cuidado simples, todos os dias</p>
+            <h1 id="hero-title">Hidratação com <span>mais clareza.</span></h1>
+            <p class="hero-description">
+              Entenda uma referência geral de ingestão diária de água e descubra os fatores que podem influenciar essa estimativa.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="./pages/calculator.html">Conheça a calculadora <span aria-hidden="true">→</span></a>
+              <a class="text-link" href="./pages/sobre.html">Aprenda sobre hidratação</a>
+            </div>
+            <p class="hero-note">
+              <img src="./assets/icons/information.svg" alt="" aria-hidden="true" width="18" height="18" />
+              Uma estimativa educativa não substitui orientação profissional.
+            </p>
+          </div>
+
+          <div class="hero-art">
+            <span class="art-orbit art-orbit-one" aria-hidden="true"></span>
+            <span class="art-orbit art-orbit-two" aria-hidden="true"></span>
+            <img class="water-illustration" src="./assets/illustrations/water-hero.svg" alt="" aria-hidden="true" width="440" height="440" />
+            <div class="art-caption" aria-hidden="true">
+              <span class="caption-icon"><img src="./assets/brand/jwater-symbol.svg" alt="" width="28" height="28" /></span>
+              <span><strong>J-WATER</strong><small>Seu ponto de partida</small></span>
+            </div>
+          </div>
+        </section>
+
+        <div class="wave-break" aria-hidden="true">
+          <img src="./assets/decorative/wave-divider.svg" alt="" />
+        </div>
+
+        <section class="intro-band" aria-labelledby="intro-title">
+          <div class="intro-content content-width">
             <div>
-                <div class="main_img"></div>
-                <h1>Bem-Vindo ao J-Water</h1>
-                <p>Seja bem-vindo ao J-Water! Nossa calculadora inovadora está aqui para revolucionar sua rotina de hidratação. </p>
-                <p>Com apenas alguns simples inputs, descubra a quantidade ideal de água que seu corpo precisa diariamente para prosperar.</p>
-                <p>Diga adeus ao achismo e olá para uma hidratação precisa, feita sob medida para suas necessidades únicas.</p>
-                <p>Experimente os benefícios de se manter adequadamente hidratado: energia aumentada, foco aprimorado e bem-estar geral. Junte-se a nós nessa jornada rumo a um você mais saudável e vibrante com o J-Water!</p>
+              <p class="eyebrow eyebrow-on-dark">Feito para ser simples</p>
+              <h2 id="intro-title">Informação clara.<br /><span>Sem complicar.</span></h2>
             </div>
-        </main>
-        <footer class="main_footer">
-            <div class="footer_icon_left">
-                <a href="https://github.com/ohdoglas" target="_blank">
-                    <img src="./assets/icons/github.png" alt="">
-                    <p class="repository_text">Creator GitHub</p>
-                </a>
-            </div>
-            <div class="footer_center">
-                <a href="https://github.com/ohdoglas/j-water" target="_blank">
-                    <img src="./assets/logo/jwater.png" alt="j-water logo">
-                    <p class="repository_text">REPOSITORY</p>
-                </a>
-            </div>
-            <div class="footer_icon_right">
-                <a href="https://www.linkedin.com/in/douglasfnmorais/" target="_blank">
-                    <img src="./assets/icons/linkedin.png" alt="">
-                    <p class="repository_text">Creator Linkedin</p>
-                </a>
-            </div>
-        </footer>
+            <p>
+              Um fluxo direto para explorar uma referência de hidratação: sem cadastro, sem histórico e com contexto sobre o que a estimativa representa.
+            </p>
+            <a class="button button-light" href="./pages/calculator.html">Ir para a calculadora <span aria-hidden="true">→</span></a>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="footer-content content-width">
+          <a class="footer-brand" href="./index.html">
+            <img src="./assets/brand/jwater-logo-inverse.svg" alt="J-WATER" width="136" height="36" />
+          </a>
+          <p>Uma ferramenta educativa para conversar sobre hidratação com mais clareza.</p>
+          <a class="footer-github" href="https://github.com/ohdoglas/j-water" target="_blank" rel="noopener noreferrer">Código no GitHub <span aria-hidden="true">↗</span></a>
+        </div>
+      </footer>
     </div>
-</body>
+  </body>
 </html>
