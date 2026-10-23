@@ -36,6 +36,7 @@
   transition: color .18s ease;
 }
 .header_nav_buttons a:hover { color: #087d82; transform: none; }
+.header_nav_buttons a[aria-current="page"] { color: #087d82; }
 .main_header a:focus-visible { outline: 3px solid #087d82; outline-offset: 4px; border-radius: 5px; }
 
 @media (max-width: 680px) {

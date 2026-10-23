@@ -1,0 +1,49 @@
+/* Progressive enhancement: unsupported browsers keep regular document navigation. */
+@view-transition {
+  navigation: auto;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+header.site-header .brand-link,
+.main_header .header_nav_logo a {
+  view-transition-name: site-brand;
+}
+
+@supports (view-transition-name: none) {
+  ::view-transition-group(site-brand) {
+    animation-duration: 340ms;
+    animation-timing-function: cubic-bezier(.2, .7, .2, 1);
+  }
+
+  ::view-transition-old(root) {
+    animation: page-leave 160ms ease-in both;
+  }
+
+  ::view-transition-new(root) {
+    animation: page-enter 320ms cubic-bezier(.2, .7, .2, 1) both;
+  }
+
+  @keyframes page-leave {
+    to { opacity: 0; transform: translateY(-6px) scale(.996); }
+  }
+
+  @keyframes page-enter {
+    from { opacity: 0; transform: translateY(10px) scale(.996); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+
+    ::view-transition-group(*),
+    ::view-transition-old(root),
+    ::view-transition-new(root),
+    ::view-transition-old(site-brand),
+    ::view-transition-new(site-brand) {
+      animation: none !important;
+    }
+  }
+}

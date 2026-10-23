@@ -35,4 +35,12 @@ A direção A foi aprovada e aplicada à página inicial: wordmark, hero, chamad
 
 A página inicial usa fonte de sistema, sem baixar fonte externa. O movimento da ilustração é discreto e desativado por `prefers-reduced-motion`. A arte do hero é decorativa para tecnologias assistivas; o texto ao redor comunica o propósito. O CTA leva à calculadora existente, sem alterar sua lógica ou fórmula.
 
-O restante da calculadora, a seção educativa e o fluxo do resultado permanecem para entregas posteriores. Esta fatia não integra os ícones de fatores ao formulário nem presume que a estimativa já esteja atualizada.
+## Página educativa — Entrega 05
+
+A página `src/pages/sobre.html` reaproveita o cabeçalho e a paleta A, com hero claro, ondas suaves, cartões editoriais, acordeões nativos e um bloco de cautela clínica. A ilustração `src/assets/illustrations/water-sources.svg` comunica três fontes de água sem indicar proporções ou uma meta de consumo. Os ícones existentes de atividade, clima, alimentos e informação apoiam os cartões; os textos correspondentes continuam sendo a fonte do significado acessível.
+
+O movimento de flutuação é decorativo e respeita `prefers-reduced-motion`. O leiaute é de coluna única em telas estreitas, com áreas interativas por teclado, skip link e foco visível. As referências e regras editoriais ficam em `docs/EDUCATIONAL-CONTENT.md`.
+
+## Transições entre páginas — Entrega 06
+
+As três páginas carregam `src/css/page-transitions.css`, que habilita transições entre documentos de mesma origem com a CSS View Transition API. A troca usa um fade curto com pequeno deslocamento vertical; a marca compartilhada participa como elemento de continuidade. Navegadores sem suporte mantêm a navegação HTML normal. A regra `prefers-reduced-motion: reduce` remove as animações e a rolagem suave. As transições entre documentos exigem que a navegação seja feita por um link interno; abrir a URL diretamente ou recarregar a página pode não animar.

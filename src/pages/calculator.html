@@ -1,83 +1,144 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora J-Water</title>
-    <link rel="stylesheet" href="../css/styles/calculator.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tomorrow:wght@500;600;900&display=swap" rel="stylesheet">
-</head>
-    <body>
-        <header class="main_header">
-            <nav class="header_nav">
-                <div class="header_nav_logo">
-                    <a href="../index.html">
-                        <img src="../assets/brand/jwater-logo.svg" alt="J-WATER">
-                    </a>
-                </div>
-                <div class="header_nav_buttons">
-                    <a href="../pages/calculator.html">
-                            Calculadora
-                    </a>
-                    <a href="../pages/sobre.html">
-                            Hidratação
-                    </a>
-                </div>
-            </nav>
-        </header>
-        <main class="main_calculator">
-            <div class="main_img"></div>
-            <form action="#" class="calculator_form">
-                <section>
-                    <label for="m">
-                        Qual o seu Sexo? <br>
-                        <input type="radio" name="gender" id="m" value="male" checked required>Masculino
-                    </label>
-                    <label for="f">
-                        <input type="radio" name="gender" id="f" value="female" required>Feminino
-                    </label> <br>
-                    <label for="age">
-                        Idade <br>
-                        <input type="number" name="age" id="age" value="0" aria-valuemax="120" aria-valuemin="1" required>
-                    </label> <br>
-                    <label for="height">
-                        Altura (cm) <br>
-                        <input type="number" name="height" id="height" value="0" aria-valuemax="280" aria-valuemin="1" required>
-                    </label> <br>
-                    <label for="weight">
-                        Peso (kg)<br>
-                        <input type="number" name="weight" id="weight" value="0" aria-valuemax="500" aria-valuemin="1" required>
-                    </label>
-                </section>
-                <section>
-                        <h4>Qual o seu nível de atividade? <button id="activity_level_text">Descubra aqui</button></h4>
-                        <div id="activity_text" class="activity_text_new">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Faça uma estimativa educativa de ingestão total de água. O resultado não é prescrição médica e não substitui orientação profissional." />
+    <meta name="theme-color" content="#f4fbfc" />
+    <title>Estimativa de hidratação — J-WATER</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/brand/jwater-symbol.svg" />
+    <link rel="stylesheet" href="../css/styles/calculator.css" />
+    <link rel="stylesheet" href="../css/page-transitions.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Pular para o conteúdo</a>
+    <header class="main_header">
+      <nav class="header_nav" aria-label="Navegação principal">
+        <div class="header_nav_logo">
+          <a href="../index.html" aria-label="J-WATER, página inicial">
+            <img src="../assets/brand/jwater-logo.svg" alt="J-WATER" width="170" height="46" />
+          </a>
+        </div>
+        <div class="header_nav_buttons">
+          <a href="../pages/sobre.html">Hidratação</a>
+          <a href="../pages/calculator.html" aria-current="page">Calculadora</a>
+        </div>
+      </nav>
+    </header>
 
-                        </div>
-                    <div class="activity_level">
-                        <input type="radio" name="activity" id="activity" value="1.2" checked>Sedentário
-                        <input type="radio" name="activity" id="activity" value="1.375">Levemente ativo
-                        <input type="radio" name="activity" id="activity" value="1.55">Moderadamente ativo
-                        <input type="radio" name="activity" id="activity" value="1.725">Muito ativo
-                        <input type="radio" name="activity" id="activity" value="1.9">Extremamente ativo
-                    </div>
-                </section>
-                <section>
-                    <label for="creatine">
-                        Quanto de creatina você consome por dia? <br>
-                        <input type="number" name="creatine" id="creatine" value="0" required>
-                    </label>
-                </section>
-                <section>
-                    <div class="form_result">
-                        <h1 id="result_h1"></h1>
-                    </div>
-                    <button class="button_jwater" id="jbutton">J-WATER</button>
-                </section>
-            </form>
-        </main>
-    </body>
+    <main id="main-content" class="calculator-page">
+      <div class="calculator-layout">
+        <section class="calculator-intro" aria-labelledby="calculator-title">
+          <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> Estimativa J-WATER</p>
+          <h1 id="calculator-title">Uma estimativa para <span>entender melhor.</span></h1>
+          <p class="intro-copy">A ferramenta combina características informadas com um modelo populacional de circulação de água no corpo. O resultado é aproximado e não determina uma meta pessoal.</p>
+          <div class="reference-note">
+            <img src="../assets/icons/information.svg" alt="" aria-hidden="true" width="22" height="22" />
+            <p>O resultado se refere à água total de alimentos e bebidas, não apenas à água pura.</p>
+          </div>
+          <aside class="medical-disclaimer" aria-label="Aviso de saúde">
+            <strong>Importante</strong>
+            <p>Esta calculadora é educativa. Não é prescrição ou orientação médica e não substitui consulta com um profissional de saúde.</p>
+          </aside>
+          <img class="calculator-illustration" src="../assets/illustrations/water-hero.svg" alt="" aria-hidden="true" width="300" height="300" />
+        </section>
+
+        <div class="calculator-column">
+          <form id="hydration-form" class="calculator-card" novalidate>
+            <h2 class="form-title">Sobre você</h2>
+            <p class="field-help">O modelo pesquisado se aplica a adultos. Os dados são usados apenas nesta página e não são salvos.</p>
+
+            <div class="form-grid">
+              <label class="form-field" for="age-years">
+                <span>Idade</span>
+                <span class="input-with-unit"><input id="age-years" name="ageYears" type="number" min="18" max="96" step="1" inputmode="numeric" required /><span>anos</span></span>
+              </label>
+              <label class="form-field" for="weight-kg">
+                <span>Peso corporal</span>
+                <span class="input-with-unit"><input id="weight-kg" name="bodyWeightKg" type="number" min="30" max="250" step="0.1" inputmode="decimal" required /><span>kg</span></span>
+              </label>
+            </div>
+
+            <fieldset class="form-fieldset" aria-describedby="sex-help">
+              <legend>Categoria usada na equação</legend>
+              <p id="sex-help" class="field-help">O estudo codificou sexo feminino e masculino como variáveis; isso não representa identidade de gênero. Se essas categorias não forem adequadas para você, esta estimativa não é indicada.</p>
+              <div class="category-options">
+                <label class="category-option" for="sex-female">
+                  <input id="sex-female" type="radio" name="sexCategory" value="female" required />
+                  <span class="option-indicator" aria-hidden="true"></span>
+                  <span class="option-copy"><strong>Feminina</strong></span>
+                </label>
+                <label class="category-option" for="sex-male">
+                  <input id="sex-male" type="radio" name="sexCategory" value="male" required />
+                  <span class="option-indicator" aria-hidden="true"></span>
+                  <span class="option-copy"><strong>Masculina</strong></span>
+                </label>
+              </div>
+            </fieldset>
+
+            <label class="form-field" for="activity-level">
+              <span>Nível de atividade habitual</span>
+              <select id="activity-level" name="activityLevel" required>
+                <option value="" selected disabled>Selecione uma opção</option>
+                <option value="low">Baixo — PAL aproximado 1,4</option>
+                <option value="moderate">Moderado — PAL aproximado 1,6</option>
+                <option value="active">Ativo — PAL aproximado 1,8</option>
+                <option value="very_active">Muito ativo — PAL aproximado 2,0</option>
+              </select>
+              <small>PAL é uma razão de atividade física usada em estudos populacionais; a faixa escolhida é uma aproximação.</small>
+            </label>
+
+            <fieldset class="form-fieldset athlete-fieldset">
+              <legend>Você se considera atleta?</legend>
+              <p class="field-help">No estudo, “atleta” é uma categoria separada do nível geral de atividade.</p>
+              <div class="category-options">
+                <label class="category-option" for="athlete-no"><input id="athlete-no" type="radio" name="athlete" value="false" required /><span class="option-indicator" aria-hidden="true"></span><span class="option-copy"><strong>Não</strong></span></label>
+                <label class="category-option" for="athlete-yes"><input id="athlete-yes" type="radio" name="athlete" value="true" required /><span class="option-indicator" aria-hidden="true"></span><span class="option-copy"><strong>Sim</strong></span></label>
+              </div>
+            </fieldset>
+
+            <details class="environment-details">
+              <summary>Adicionar condições ambientais (opcional)</summary>
+              <p class="field-help">Se deixar todos os campos vazios, será usado o cenário-base do exemplo publicado (10 °C, 50% de umidade, altitude 0 m e categoria de país com IDH alto). Se preencher algum campo, preencha os três.</p>
+              <div class="form-grid environment-grid">
+                <label class="form-field" for="temperature-c"><span>Temperatura externa</span><span class="input-with-unit"><input id="temperature-c" name="temperatureC" type="number" min="-10" max="50" step="0.1" inputmode="decimal" /><span>°C</span></span></label>
+                <label class="form-field" for="humidity-percent"><span>Umidade relativa</span><span class="input-with-unit"><input id="humidity-percent" name="relativeHumidityPercent" type="number" min="0" max="100" step="1" inputmode="numeric" /><span>%</span></span></label>
+                <label class="form-field" for="altitude-m"><span>Altitude aproximada</span><span class="input-with-unit"><input id="altitude-m" name="altitudeMeters" type="number" min="-500" max="9000" step="1" inputmode="numeric" /><span>m</span></span></label>
+              </div>
+              <p class="field-help">Informe valores que representem o ambiente externo habitual. Uma cidade ou região ampla não define as condições pessoais de exposição.</p>
+            </details>
+
+            <p id="form-error" class="field-error" role="alert" tabindex="-1" hidden></p>
+            <p class="scope-note">Altura e uso de creatina não são usados para alterar o resultado: a equação escolhida não oferece um ajuste validado para esses fatores.</p>
+            <button class="calculate-button" type="submit">Calcular estimativa <span aria-hidden="true">→</span></button>
+          </form>
+
+          <section id="calculation-result" class="result-card" aria-labelledby="result-title" aria-live="polite" tabindex="-1" hidden>
+            <div class="result-heading">
+              <span class="result-drop" aria-hidden="true"><img src="../assets/brand/jwater-symbol.svg" alt="" width="28" height="28" /></span>
+              <div><p class="result-kicker">Estimativa educativa</p><h2 id="result-title">Ingestão total de água</h2></div>
+            </div>
+            <p class="result-amount"><strong id="result-liters">—</strong><span>litros por dia, aproximadamente</span></p>
+            <p class="result-milliliters"><span id="result-milliliters">—</span> ml/dia · inclui água de alimentos e bebidas</p>
+            <div class="cup-equivalence"><img src="../assets/icons/glass-250ml.svg" alt="" aria-hidden="true" width="30" height="30" /><p>Equivalência matemática: cerca de <strong id="result-cups">—</strong> copos de 250 ml.</p></div>
+            <p class="cup-note">Não significa que esse volume deva ser bebido somente como água pura.</p>
+            <details class="result-details">
+              <summary>Como interpretar este resultado</summary>
+              <p>O estudo prevê a circulação diária de água (<em>water turnover</em>). A ingestão total de alimentos e bebidas foi estimada a partir de uma proporção aproximada descrita no próprio estudo. A equação explicou 47,1% da variação observada; ela não prevê com precisão a necessidade individual.</p>
+              <p id="environment-used">—</p>
+              <p>Para comparação, a Ingestão Adequada populacional da EFSA é <span id="population-reference">—</span> para a categoria selecionada; esse valor também não é uma meta clínica individual.</p>
+            </details>
+            <p class="result-warning"><strong>Não é prescrição médica.</strong> Esta estimativa não avalia sua hidratação, não substitui consulta ou orientação de um profissional de saúde e não deve ser usada para tratar condições clínicas. Gravidez, amamentação, doenças, medicamentos ou restrição de líquidos exigem orientação individualizada.</p>
+            <button id="new-calculation" class="reset-button" type="button">Fazer outra estimativa</button>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <footer class="calculator-footer">
+      <p>Metodologia exploratória: Yamada et al. (2022); comparação populacional: EFSA (2010). <a href="../pages/sobre.html">Leia sobre hidratação</a>.</p>
+      <p>Ferramenta educativa, não substitui avaliação ou aconselhamento médico.</p>
+    </footer>
     <script type="module" src="../scripts/main.ts"></script>
+  </body>
 </html>
