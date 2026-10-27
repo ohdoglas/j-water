@@ -35,3 +35,14 @@ O termo **água total** é explicado como água de água potável, outras bebida
 - Perguntas frequentes usam `<details>` e `<summary>` nativos, sem depender de hover ou JavaScript.
 - Animações são decorativas e respeitam `prefers-reduced-motion`.
 - Toda informação relevante permanece no texto; nenhuma explicação depende apenas de cor ou ilustração.
+
+## Conteúdo da comparação de consumo
+
+A comparação em `src/pages/calculator.html` apresenta blocos educativos escolhidos somente pelo cenário matemático (`below`, `near`, `above`) em `src/content/comparison-education.ts`. O cenário não determina sintomas, diagnóstico, estado fisiológico ou uma ação clínica.
+
+- **Abaixo:** sintomas comuns são descritos como possibilidades gerais associadas em algumas situações à ingestão insuficiente/perdas; o texto explica que não são deduzidos do valor comparado. Sugestões são hábitos flexíveis e não definem volumes.
+- **Próximo:** explica funções fisiológicas gerais da água e deixa claro que proximidade não comprova adequação nem garante benefício extra.
+- **Acima:** informa que a comparação não caracteriza problema e inclui aviso específico sobre ingestão excessiva durante exercício prolongado, sem prescrever limites.
+- **Todos os cenários:** avisam que condições e tratamentos individuais prevalecem sobre a estimativa; há orientação de procurar atendimento urgente diante de sinais graves, sem afirmar que a ferramenta consegue avaliá-los.
+
+Fontes institucionais verificadas para essa edição: [NHS — desidratação](https://www.nhs.uk/conditions/dehydration/), [MedlinePlus — desidratação](https://medlineplus.gov/dehydration.html), [National Academies — funções e fontes de água total](https://www.nationalacademies.org/read/10925/chapter/2), [CDC Yellow Book — calor e hiponatremia associada a exercício](https://www.cdc.gov/yellow-book/hcp/environmental-hazards-risks/heat-and-cold-illness-in-travelers.html) e [NIDDK — líquidos e doença renal crônica](https://www.niddk.nih.gov/health-information/kidney-disease/chronic-kidney-disease-ckd/healthy-eating-adults-chronic-kidney-disease).

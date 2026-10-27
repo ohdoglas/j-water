@@ -2,6 +2,12 @@
 
 Este documento registra mudanças relevantes por versão.
 
+## J-WATER 2.0 — análise comparativa de hidratação (27/10/2026)
+
+- Adicionada comparação opcional entre a estimativa e o consumo total informado, com entrada em litros/ml ou copos equivalentes.
+- Adicionados cenários aritméticos e conteúdo educativo contextual, avisos clínicos e fontes institucionais.
+- A interface continua sem contas, armazenamento ou transmissão dos dados do formulário.
+
 ## J-WATER 2.0 — 23/10/2026
 
 - Atualizou a identidade visual da landing page e adicionou marca e ilustrações SVG.

@@ -10,6 +10,7 @@ J-WATER é uma aplicação web estática com conteúdo educativo sobre hidrataç
 - Usa idade, categoria de sexo codificada pelo estudo, peso, nível habitual de atividade aproximado, status de atleta e condições ambientais opcionais.
 - Informa as condições ambientais assumidas quando temperatura, umidade e altitude não são fornecidas.
 - Apresenta a estimativa como água total de alimentos e bebidas; copos de 250 ml são apenas equivalência matemática, não uma instrução de consumo de água pura.
+- Depois da estimativa, compara matematicamente o total informado pelo visitante em litros/ml ou copos equivalentes; mostra diferença, proporção e conteúdo educativo contextual sem inferir hidratação clínica.
 - Explica limites científicos e situações clínicas que não devem ser ajustadas pela calculadora.
 
 O motor não determina necessidade individual, não avalia o estado de hidratação, não calcula perdas de um treino e não aplica ajustes por altura, creatina, doença, medicamento, gravidez ou amamentação. Consulte [a metodologia](docs/HYDRATION-METHODOLOGY.md) antes de interpretar os números.
@@ -54,7 +55,9 @@ O build produz arquivos estáticos em `dist/`. Os testes automatizados cobrem o 
 
 - `src/index.html` e `src/pages/`: três páginas HTML independentes.
 - `src/domain/hydration.ts`: validação e motor de cálculo sem dependência do DOM.
-- `src/scripts/calculator.ts`: coleta do formulário, formatação pt-BR e atualização do resultado.
+- `src/domain/hydration-comparison.ts`: conversão, validação e comparação matemática de água total, independente do DOM.
+- `src/content/comparison-education.ts`: conteúdo editorial estático para os três cenários comparativos.
+- `src/scripts/calculator.ts`: coleta dos formulários, formatação pt-BR e atualização dos resultados.
 - `src/scripts/main.ts`: entrada TypeScript da calculadora.
 - `src/css/`: estilos por página, cabeçalho compartilhado, tokens e transições de navegação.
 - `src/assets/`: marca, ilustrações e ícones SVG.
