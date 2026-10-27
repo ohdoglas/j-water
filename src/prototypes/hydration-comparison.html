@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f4fbfc" />
+    <title>Protótipo de comparação — J-WATER</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/brand/jwater-symbol.svg" />
+    <link rel="stylesheet" href="../css/prototypes/hydration-comparison.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Pular para o conteúdo</a>
+    <header class="site-header">
+      <a class="brand" href="../index.html" aria-label="J-WATER, página inicial">
+        <img src="../assets/brand/jwater-logo.svg" alt="J-WATER" width="148" height="40" />
+      </a>
+      <nav aria-label="Navegação da demonstração">
+        <span class="prototype-tag">Prévia visual</span>
+        <a class="back-link" href="../pages/calculator.html">Voltar à calculadora <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+
+    <main id="main-content" class="page-shell">
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> J-WATER · comparação educativa</p>
+        <h1 id="page-title">Seu hábito, em <span>perspectiva.</span></h1>
+        <p class="intro-copy">Uma comparação simples entre sua estimativa diária de água total e o valor calculado para o seu perfil.</p>
+        <div class="demo-notice" role="note">
+          <span aria-hidden="true">✳</span>
+          <p><strong>Protótipo visual:</strong> os valores são exemplos estáticos; os campos ainda não calculam nem salvam dados.</p>
+        </div>
+      </section>
+
+      <section class="estimate-banner" aria-label="Estimativa da calculadora">
+        <span class="estimate-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" focusable="false"><path d="M16 3.5C13 8.4 7.2 14.2 7.2 20.3a8.8 8.8 0 0 0 17.6 0C24.8 14.2 19 8.4 16 3.5Z"/><path d="M11.7 21.2c.3 2.3 1.8 3.7 4.2 4.1"/></svg>
+        </span>
+        <div class="estimate-copy">
+          <span class="estimate-label">Sua estimativa J-WATER</span>
+          <strong>2,50 <small>L/dia</small></strong>
+        </div>
+        <span class="estimate-scope">Água total de alimentos e bebidas</span>
+      </section>
+
+      <section class="comparison-layout" aria-label="Informar e comparar consumo">
+        <form class="entry-card" aria-labelledby="entry-title">
+          <div class="card-heading">
+            <span class="step-number">01</span>
+            <div>
+              <h2 id="entry-title">E você, quanto consome?</h2>
+              <p>Informe uma estimativa do seu consumo total diário de água.</p>
+            </div>
+          </div>
+
+          <div class="scope-hint">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8h.01"/></svg>
+            <p>Considere a água que vem de <strong>bebidas e alimentos</strong>. O valor é aproximado e autodeclarado.</p>
+          </div>
+
+          <fieldset class="mode-picker">
+            <legend>Como prefere informar?</legend>
+            <div class="mode-options">
+              <input id="mode-volume" name="entry-mode" type="radio" checked />
+              <label for="mode-volume"><span aria-hidden="true">◉</span> Volume</label>
+              <input id="mode-cups" name="entry-mode" type="radio" />
+              <label for="mode-cups"><span aria-hidden="true">▤</span> Copos equivalentes</label>
+            </div>
+
+            <div class="entry-panels">
+              <div class="entry-panel entry-panel-volume">
+                <label for="daily-volume">Consumo total estimado</label>
+                <div class="input-combo">
+                  <input id="daily-volume" type="number" value="1.5" min="0" step="0.1" inputmode="decimal" />
+                  <select aria-label="Unidade do consumo"><option selected>L</option><option>ml</option></select>
+                </div>
+                <span class="field-caption">Exemplo: 1,5 litro de água total por dia</span>
+              </div>
+              <div class="entry-panel entry-panel-cups">
+                <label for="daily-cups">Quantidade de copos equivalentes</label>
+                <div class="input-combo">
+                  <input id="daily-cups" type="number" value="6" min="0" step="1" inputmode="numeric" />
+                  <span class="unit-static">copos</span>
+                </div>
+                <label class="capacity-label" for="cup-capacity">Volume de cada copo</label>
+                <select id="cup-capacity"><option>200 ml</option><option selected>250 ml</option><option>300 ml</option><option>500 ml</option><option>Personalizar…</option></select>
+                <span class="field-caption">Use copos equivalentes do total informado, incluindo água dos alimentos.</span>
+              </div>
+            </div>
+          </fieldset>
+
+          <button class="compare-button" type="button">Ver comparação <span aria-hidden="true">→</span></button>
+          <p class="privacy-note"><span aria-hidden="true">⌁</span> Seus dados continuam nesta página e não são salvos.</p>
+        </form>
+
+        <section class="visual-card" aria-labelledby="visual-title" aria-describedby="visual-description">
+          <div class="visual-card-heading">
+            <div>
+              <span class="step-number">02</span>
+              <h2 id="visual-title">Sua comparação</h2>
+            </div>
+            <span class="sample-pill">Exemplo</span>
+          </div>
+          <p id="visual-description" class="visual-description">Os dois valores aparecem na mesma escala para facilitar a leitura.</p>
+
+          <div class="vessels" role="group" aria-label="Comparação em escala compartilhada">
+            <div class="vessel-item">
+              <div class="vessel-wrap">
+                <div class="vessel vessel-estimate" role="img" aria-label="Estimativa J-WATER: 2,5 litros, escala máxima 2,5 litros">
+                  <span class="vessel-water" style="--water-level: 100%"></span>
+                  <span class="vessel-glint" aria-hidden="true"></span>
+                </div>
+                <span class="vessel-tick tick-top" aria-hidden="true"></span>
+                <span class="vessel-tick tick-middle" aria-hidden="true"></span>
+                <span class="vessel-tick tick-bottom" aria-hidden="true"></span>
+              </div>
+              <strong class="vessel-value">2,50 <small>L</small></strong>
+              <span class="vessel-label">Estimativa J-WATER</span>
+            </div>
+
+            <div class="comparison-connector" aria-hidden="true"><span>×</span></div>
+
+            <div class="vessel-item">
+              <div class="vessel-wrap">
+                <div class="vessel vessel-reported" role="img" aria-label="Consumo total informado: 1,5 litro, 60 por cento da escala máxima de 2,5 litros">
+                  <span class="vessel-water" style="--water-level: 60%"></span>
+                  <span class="vessel-glint" aria-hidden="true"></span>
+                </div>
+                <span class="vessel-tick tick-top" aria-hidden="true"></span>
+                <span class="vessel-tick tick-middle" aria-hidden="true"></span>
+                <span class="vessel-tick tick-bottom" aria-hidden="true"></span>
+              </div>
+              <strong class="vessel-value">1,50 <small>L</small></strong>
+              <span class="vessel-label">Total informado</span>
+            </div>
+          </div>
+
+          <div class="comparison-summary">
+            <span class="summary-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false"><path d="M12 4v15m0 0 6-6m-6 6-6-6"/></svg>
+            </span>
+            <div>
+              <p>Diferença matemática</p>
+              <strong>1.000 ml abaixo <span>da estimativa</span></strong>
+            </div>
+          </div>
+
+          <div class="ratio-row">
+            <div class="ratio-copy"><span>Proporção entre os valores</span><strong>60%</strong></div>
+            <div class="ratio-track" role="img" aria-label="O volume informado equivale a 60 por cento da estimativa comparada"><span style="--ratio: 60%"></span></div>
+            <p>Proporção matemática; não mede hidratação fisiológica.</p>
+          </div>
+        </section>
+      </section>
+
+      <section class="interpretation" aria-labelledby="interpretation-title">
+        <div class="interpretation-heading">
+          <span class="interpretation-mark" aria-hidden="true">i</span>
+          <div>
+            <span class="eyebrow">Leitura do exemplo</span>
+            <h2 id="interpretation-title">Um ponto de partida para observar seus hábitos.</h2>
+          </div>
+        </div>
+        <p>O total informado neste exemplo está abaixo da estimativa calculada. Essa diferença não significa que você esteja desidratado e não avalia seu estado de saúde. Necessidades e ingestão variam com a rotina, o ambiente, a alimentação e outras condições.</p>
+        <div class="interpretation-footer">
+          <span class="soft-pill"><span aria-hidden="true">↗</span> Comparação educativa</span>
+          <span class="medical-reminder">A estimativa não é prescrição médica.</span>
+        </div>
+      </section>
+
+      <section class="learning-grid" aria-label="Conteúdo educativo sobre hidratação">
+        <article class="learning-card signs-card">
+          <span class="learning-icon" aria-hidden="true">
+            <svg viewBox="0 0 28 28" focusable="false"><path d="M14 3.5 25 23H3L14 3.5Z"/><path d="M14 10v6m0 3h.01"/></svg>
+          </span>
+          <p class="card-kicker">Observe sem diagnosticar</p>
+          <h3>O corpo pode dar sinais</h3>
+          <p>Em algumas situações, sede, boca seca, cansaço ou urina mais escura podem aparecer. Esses sinais têm outras causas e não confirmam desidratação.</p>
+          <a href="../pages/sobre.html">Entender os sinais <span aria-hidden="true">→</span></a>
+        </article>
+
+        <article class="learning-card routine-card">
+          <span class="learning-icon" aria-hidden="true">
+            <svg viewBox="0 0 28 28" focusable="false"><path d="M7 4h14l-1.2 19H8.2L7 4Z"/><path d="M9 14c3 2 7-2 10 0v7H9v-7Z"/></svg>
+          </span>
+          <p class="card-kicker">Pequenos apoios</p>
+          <h3>Faça caber na sua rotina</h3>
+          <p>Deixar uma bebida acessível e associar pausas ou refeições à hidratação pode ajudar a lembrar, sem seguir um cronograma rígido.</p>
+          <a href="../pages/sobre.html#habits-title">Ver ideias práticas <span aria-hidden="true">→</span></a>
+        </article>
+
+        <article class="learning-card balance-card">
+          <span class="learning-icon" aria-hidden="true">
+            <svg viewBox="0 0 28 28" focusable="false"><path d="M14 3.5C11.5 7.6 7 12.2 7 17a7 7 0 0 0 14 0c0-4.8-4.5-9.4-7-13.5Z"/><path d="M10.5 18c.3 1.7 1.4 2.8 3.2 3"/></svg>
+          </span>
+          <p class="card-kicker">Equilíbrio</p>
+          <h3>Mais nem sempre é melhor</h3>
+          <p>Beber água em excesso, especialmente em certos contextos de exercício prolongado, também pode trazer riscos. Evite forçar grandes volumes em pouco tempo.</p>
+          <a href="../pages/sobre.html#care-title">Ler sobre cuidados <span aria-hidden="true">→</span></a>
+        </article>
+      </section>
+
+      <section class="scenario-board" aria-labelledby="scenario-title">
+        <div class="scenario-board-heading">
+          <span class="eyebrow">Estados previstos no protótipo</span>
+          <h2 id="scenario-title">A mensagem acompanha a diferença, sem virar diagnóstico.</h2>
+          <p>Apenas o estado correspondente ao cálculo apareceria na experiência final.</p>
+        </div>
+        <div class="scenario-grid">
+          <article class="scenario-preview scenario-below">
+            <span class="scenario-symbol" aria-hidden="true">↓</span>
+            <div><h3>Abaixo da estimativa</h3><p>Seu total informado está abaixo da estimativa. Isso não comprova desidratação; observe seus hábitos e o contexto do dia.</p></div>
+          </article>
+          <article class="scenario-preview scenario-near">
+            <span class="scenario-symbol" aria-hidden="true">≈</span>
+            <div><h3>Próximo da estimativa</h3><p>Os valores estão próximos dentro da tolerância visual. Isso não confirma hidratação adequada.</p></div>
+          </article>
+          <article class="scenario-preview scenario-above">
+            <span class="scenario-symbol" aria-hidden="true">↑</span>
+            <div><h3>Acima da estimativa</h3><p>Seu total informado está acima da estimativa. Mais ingestão não representa automaticamente mais benefício.</p></div>
+          </article>
+        </div>
+      </section>
+
+      <aside class="medical-footer" aria-label="Aviso importante">
+        <span aria-hidden="true">✳</span>
+        <p><strong>Importante:</strong> o J-WATER é educativo. Não diagnostica desidratação, não determina uma meta clínica e não substitui consulta ou orientação profissional. Se você tem uma condição de saúde ou recebeu uma restrição de líquidos, siga a recomendação da sua equipe de saúde.</p>
+      </aside>
+    </main>
+
+    <footer class="site-footer">
+      <img src="../assets/brand/jwater-symbol.svg" alt="" width="24" height="24" />
+      <p>J-WATER <span>·</span> informação para escolhas mais conscientes.</p>
+      <a href="../pages/calculator.html">Voltar à calculadora</a>
+    </footer>
+  </body>
+</html>

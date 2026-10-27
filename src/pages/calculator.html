@@ -131,6 +131,144 @@
             <p class="result-warning"><strong>Não é prescrição médica.</strong> Esta estimativa não avalia sua hidratação, não substitui consulta ou orientação de um profissional de saúde e não deve ser usada para tratar condições clínicas. Gravidez, amamentação, doenças, medicamentos ou restrição de líquidos exigem orientação individualizada.</p>
             <button id="new-calculation" class="reset-button" type="button">Fazer outra estimativa</button>
           </section>
+
+          <section id="hydration-comparison" class="comparison-card" aria-labelledby="comparison-title" hidden>
+            <div class="comparison-heading">
+              <span class="comparison-step" aria-hidden="true">02</span>
+              <div>
+                <p class="result-kicker">Comparação educativa</p>
+                <h2 id="comparison-title">E você, quanto de água consome?</h2>
+              </div>
+            </div>
+            <p class="comparison-intro">Informe uma estimativa do seu consumo total diário, incluindo água de bebidas e alimentos. A comparação é matemática, não avalia sua hidratação.</p>
+
+            <form id="comparison-form" novalidate>
+              <fieldset class="comparison-mode" aria-describedby="comparison-error">
+                <legend>Como prefere informar?</legend>
+                <div class="comparison-mode-options">
+                  <label for="mode-volume"><input id="mode-volume" name="entryMode" type="radio" value="volume" checked /> <span>Volume</span></label>
+                  <label for="mode-cups"><input id="mode-cups" name="entryMode" type="radio" value="cups" /> <span>Copos equivalentes</span></label>
+                </div>
+
+                <div class="comparison-input-panels">
+                  <div id="volume-input-panel" class="comparison-input-panel">
+                    <label class="form-field" for="consumption-volume">
+                      <span>Consumo total estimado</span>
+                      <span class="input-with-unit">
+                        <input id="consumption-volume" name="volume" type="number" min="0" max="20000" step="any" inputmode="decimal" aria-describedby="comparison-error" />
+                        <select id="consumption-unit" name="unit" aria-label="Unidade do volume" aria-describedby="comparison-error">
+                          <option value="L" selected>L</option>
+                          <option value="ml">ml</option>
+                        </select>
+                      </span>
+                    </label>
+                    <small>Exemplo: 1,5 litro de água total por dia.</small>
+                  </div>
+
+                  <div id="cups-input-panel" class="comparison-input-panel" hidden>
+                    <label class="form-field" for="consumption-cups">
+                      <span>Quantidade de copos equivalentes</span>
+                      <span class="input-with-unit">
+                        <input id="consumption-cups" name="cups" type="number" min="0" max="100" step="1" inputmode="numeric" aria-describedby="comparison-error" />
+                        <span class="input-unit-static">copos</span>
+                      </span>
+                    </label>
+                    <label class="form-field cup-capacity-field" for="cup-capacity">
+                      <span>Capacidade de cada copo</span>
+                      <select id="cup-capacity" name="cupCapacity" aria-describedby="comparison-error">
+                        <option value="200">200 ml</option>
+                        <option value="250" selected>250 ml</option>
+                        <option value="300">300 ml</option>
+                        <option value="500">500 ml</option>
+                        <option value="custom">Personalizar</option>
+                      </select>
+                    </label>
+                    <label id="custom-capacity-field" class="form-field" for="custom-cup-capacity" hidden>
+                      <span>Volume personalizado</span>
+                      <span class="input-with-unit">
+                        <input id="custom-cup-capacity" name="customCupCapacity" type="number" min="50" max="2000" step="1" inputmode="numeric" aria-describedby="comparison-error" />
+                        <span class="input-unit-static">ml</span>
+                      </span>
+                    </label>
+                    <small>Copos equivalentes do volume total informado; a água dos alimentos não é ingerida literalmente em copos.</small>
+                  </div>
+                </div>
+              </fieldset>
+
+              <p id="comparison-error" class="field-error" role="alert" tabindex="-1" hidden></p>
+              <button class="compare-button" type="submit">Comparar valores <span aria-hidden="true">→</span></button>
+            </form>
+
+            <section id="comparison-result" class="comparison-result" aria-labelledby="comparison-result-title" tabindex="-1" hidden>
+              <div class="comparison-result-heading">
+                <h3 id="comparison-result-title">Sua comparação</h3>
+                <span class="comparison-scope-label">Água total · alimentos e bebidas</span>
+              </div>
+              <p class="comparison-scale-note">Os recipientes usam a mesma escala, ajustada ao maior dos dois valores.</p>
+
+              <div class="comparison-vessels" role="group" aria-label="Valores comparados em escala compartilhada">
+                <div class="comparison-vessel-item">
+                  <div class="comparison-vessel-wrap">
+                    <div id="estimate-vessel" class="comparison-vessel" role="img" aria-label="Estimativa J-WATER">
+                      <span id="estimate-water" class="comparison-vessel-water" aria-hidden="true"></span>
+                      <span class="comparison-vessel-glint" aria-hidden="true"></span>
+                    </div>
+                  </div>
+                  <strong id="comparison-estimate-value" class="comparison-vessel-value">—</strong>
+                  <span class="comparison-vessel-label">Estimativa J-WATER</span>
+                </div>
+                <span class="comparison-vs" aria-hidden="true">×</span>
+                <div class="comparison-vessel-item">
+                  <div class="comparison-vessel-wrap">
+                    <div id="reported-vessel" class="comparison-vessel comparison-vessel-reported" role="img" aria-label="Consumo total informado">
+                      <span id="reported-water" class="comparison-vessel-water" aria-hidden="true"></span>
+                      <span class="comparison-vessel-glint" aria-hidden="true"></span>
+                    </div>
+                  </div>
+                  <strong id="comparison-reported-value" class="comparison-vessel-value">—</strong>
+                  <span class="comparison-vessel-label">Total informado</span>
+                </div>
+              </div>
+
+              <div id="comparison-summary" class="comparison-summary" data-scenario="near">
+                <span class="comparison-summary-mark" aria-hidden="true">↔</span>
+                <div>
+                  <p id="comparison-scenario-title">Diferença matemática</p>
+                  <strong id="comparison-difference">—</strong>
+                </div>
+              </div>
+              <div class="comparison-ratio">
+                <span>Proporção em relação à estimativa</span>
+                <strong id="comparison-percentage">—</strong>
+                <small>Relação matemática; não mede hidratação fisiológica.</small>
+              </div>
+              <p id="comparison-message" class="comparison-message"></p>
+              <p class="comparison-tolerance-note">“Próximo” usa uma tolerância visual/comparativa de 250 ml; não é intervalo de segurança médica. Nenhum cenário confirma desidratação ou hidratação adequada.</p>
+              <section class="comparison-education" aria-labelledby="comparison-education-heading">
+                <h4 id="comparison-education-heading">Informação educativa</h4>
+                <p id="comparison-education-introduction"></p>
+                <ul id="comparison-education-points"></ul>
+                <h5 id="comparison-practical-heading"></h5>
+                <ul id="comparison-practical-tips"></ul>
+              </section>
+              <aside class="comparison-safety-note" aria-labelledby="comparison-safety-heading">
+                <h4 id="comparison-safety-heading">Atenção à sua saúde</h4>
+                <p>Se você tem doença renal ou cardíaca, diabetes, está grávida ou amamentando, usa medicamentos que alteram a eliminação de líquidos ou recebeu restrição hídrica, siga a orientação da sua equipe de saúde. Não use esta estimativa para mudar um plano individual.</p>
+                <p>Confusão, desmaio, dificuldade para despertar ou respiração rápida podem exigir atendimento urgente. Esses sinais não podem ser avaliados por esta calculadora.</p>
+              </aside>
+              <details class="comparison-references">
+                <summary>Fontes e leituras</summary>
+                <ul>
+                  <li><a href="https://www.nhs.uk/conditions/dehydration/">NHS — sinais e sintomas de desidratação (em inglês)</a></li>
+                  <li><a href="https://medlineplus.gov/dehydration.html">MedlinePlus / National Library of Medicine — desidratação (em inglês)</a></li>
+                  <li><a href="https://www.nationalacademies.org/read/10925/chapter/2">National Academies — funções da água e definição de água total (em inglês)</a></li>
+                  <li><a href="https://www.cdc.gov/yellow-book/hcp/environmental-hazards-risks/heat-and-cold-illness-in-travelers.html">CDC Yellow Book — calor, exercício e hiponatremia associada a exercício (em inglês)</a></li>
+                  <li><a href="https://www.niddk.nih.gov/health-information/kidney-disease/chronic-kidney-disease-ckd/healthy-eating-adults-chronic-kidney-disease">NIDDK — líquidos e doença renal crônica (em inglês)</a></li>
+                </ul>
+              </details>
+              <button id="edit-comparison" class="reset-button" type="button">Alterar consumo e comparar novamente</button>
+            </section>
+          </section>
         </div>
       </div>
     </main>
