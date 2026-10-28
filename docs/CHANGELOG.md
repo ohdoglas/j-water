@@ -2,6 +2,14 @@
 
 Este documento registra mudanças relevantes por versão.
 
+## J-WATER 2.0 — português e inglês (28/10/2026)
+
+- Adicionado seletor de idioma compartilhado no cabeçalho das páginas inicial, calculadora e conteúdo educativo.
+- Traduzidas as páginas, metadados, mensagens de validação, resultado da estimativa, comparação e conteúdo educativo para inglês; português do Brasil continua como idioma padrão.
+- Mantida a seleção de idioma nos links internos por meio do parâmetro `?lang=en`, sem persistência de dados no navegador.
+- Revisado o README em português com instruções de execução, arquitetura, publicação, idiomas e privacidade.
+- Incluídos testes para formatação dos resultados em inglês.
+
 ## J-WATER 2.0 — análise comparativa de hidratação (27/10/2026)
 
 - Adicionada comparação opcional entre a estimativa e o consumo total informado, com entrada em litros/ml ou copos equivalentes.

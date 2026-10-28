@@ -37,6 +37,17 @@ describe("formatHydrationEstimate", () => {
     expect(formatHydrationEstimate(calculation.estimate).environment)
       .toBe("Condições ambientais informadas: 24 °C, 65% de umidade relativa e altitude 760 m. O modelo mantém fixa a categoria de país com IDH alto.");
   });
+
+  it("formats estimate text and numbers in English when requested", () => {
+    const calculation = calculateHydrationEstimate({ ageYears: 30, sexCategory: "female", bodyWeightKg: 60, activityLevel: "moderate", athlete: false });
+    if (!calculation.ok) throw new Error("Expected a valid estimate");
+    expect(formatHydrationEstimate(calculation.estimate, "en")).toMatchObject({
+      liters: "2.25",
+      milliliters: "2,250",
+      populationReference: "2,000 ml/day",
+      environment: expect.stringContaining("Environmental conditions used"),
+    });
+  });
 });
 
 describe("formatHydrationComparison", () => {
@@ -93,6 +104,18 @@ describe("formatHydrationComparison", () => {
         heading: "O papel da água no organismo",
         points: expect.arrayContaining([expect.stringContaining("não comprova hidratação adequada")]),
       }),
+    });
+  });
+
+  it("formats a comparison and its educational content in English", () => {
+    const result = compareHydrationIntake(2_500, 1_500);
+    if (!result.ok) throw new Error("Expected valid comparison values");
+    expect(formatHydrationComparison(result.comparison, "en")).toMatchObject({
+      estimateLiters: "2.5",
+      difference: "1,000 ml below the estimate",
+      percentage: "60%",
+      scenarioTitle: "Intake below the estimate",
+      education: expect.objectContaining({ heading: "What this difference can and cannot tell you" }),
     });
   });
 });

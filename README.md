@@ -1,26 +1,33 @@
 # J-WATER
 
-J-WATER é uma aplicação web estática com conteúdo educativo sobre hidratação e uma calculadora exploratória de ingestão total de água. O fluxo é direto: acessar, informar os dados, calcular e ler o resultado — sem conta, histórico ou backend.
+Aplicação web educativa sobre hidratação, com uma estimativa exploratória de ingestão total de água e comparação com o consumo informado. O projeto mantém um fluxo simples, roda inteiramente no navegador e está disponível em português do Brasil e inglês.
 
-> **Estado:** J-WATER 2.0. A aplicação está publicada em [ohdoglas.github.io/j-water](https://ohdoglas.github.io/j-water/). A estimativa é educativa, não é prescrição médica e não substitui avaliação ou orientação de um profissional de saúde.
+**Acesse:** [ohdoglas.github.io/j-water](https://ohdoglas.github.io/j-water/) · **Repositório:** [github.com/ohdoglas/j-water](https://github.com/ohdoglas/j-water)
 
-## O que a aplicação faz
+> A estimativa é educativa: não é prescrição ou meta clínica, não avalia o estado de hidratação e não substitui consulta ou orientação de um profissional de saúde.
 
-- Apresenta uma estimativa exploratória baseada na regressão de *water turnover* de Yamada et al. (2022), para adultos dentro do escopo documentado.
-- Usa idade, categoria de sexo codificada pelo estudo, peso, nível habitual de atividade aproximado, status de atleta e condições ambientais opcionais.
-- Informa as condições ambientais assumidas quando temperatura, umidade e altitude não são fornecidas.
-- Apresenta a estimativa como água total de alimentos e bebidas; copos de 250 ml são apenas equivalência matemática, não uma instrução de consumo de água pura.
-- Depois da estimativa, compara matematicamente o total informado pelo visitante em litros/ml ou copos equivalentes; mostra diferença, proporção e conteúdo educativo contextual sem inferir hidratação clínica.
-- Explica limites científicos e situações clínicas que não devem ser ajustadas pela calculadora.
+## Funcionalidades
 
-O motor não determina necessidade individual, não avalia o estado de hidratação, não calcula perdas de um treino e não aplica ajustes por altura, creatina, doença, medicamento, gravidez ou amamentação. Consulte [a metodologia](docs/HYDRATION-METHODOLOGY.md) antes de interpretar os números.
+- Calculadora exploratória baseada no modelo de circulação de água (*water turnover*) de Yamada et al. (2022), dentro do escopo e das limitações documentadas.
+- Entradas de idade, categoria codificada pelo estudo, peso, atividade habitual, status de atleta e condições ambientais opcionais.
+- Comparação matemática entre a estimativa e o consumo total informado em litros, mililitros ou copos equivalentes.
+- Conteúdo educativo com explicações, limitações e referências institucionais e científicas.
+- Seletor de idioma no cabeçalho para alternar entre português do Brasil e inglês. O idioma é refletido na URL com `?lang=en`; português é o padrão.
+- Layout responsivo, navegação por teclado, estados de foco visíveis e respeito à preferência por movimento reduzido.
 
-## Requisitos
+O resultado representa uma aproximação de água total proveniente de alimentos e bebidas, não um volume de água pura a consumir. O modelo não inclui ajustes individualizados para altura, creatina, doenças, medicamentos, gravidez ou amamentação. Consulte a [metodologia da estimativa](docs/HYDRATION-METHODOLOGY.md) e as [referências educativas](docs/EDUCATIONAL-CONTENT.md).
 
-- Node.js 20.19+ ou 22.12+
-- npm
+## Tecnologias
+
+- TypeScript e HTML semântico
+- Vite para desenvolvimento e build estático
+- CSS modular, sem framework de interface
+- Vitest, ESLint e TypeScript para validação
+- GitHub Actions e GitHub Pages para build e publicação
 
 ## Executar localmente
+
+Requisitos: Node.js 20.19+ ou 22.12+ e npm.
 
 ```bash
 npm ci
@@ -38,8 +45,9 @@ Rotas principais:
 - `/` — página inicial
 - `/pages/calculator.html` — calculadora
 - `/pages/sobre.html` — conteúdo educativo
+- Acrescente `?lang=en` a uma rota para abri-la em inglês, por exemplo `/pages/calculator.html?lang=en`.
 
-## Verificações
+## Verificação e build
 
 ```bash
 npm run typecheck
@@ -49,32 +57,27 @@ npm run build
 npm run preview
 ```
 
-O build produz arquivos estáticos em `dist/`. Os testes automatizados cobrem o motor de cálculo e a formatação da calculadora. A checklist de fluxo funcional, teclado, movimento reduzido e revisão visual está em [docs/TESTING.md](docs/TESTING.md).
+O Vite usa `src/` como raiz e gera o site estático em `dist/`. O workflow [Publicar no GitHub Pages](.github/workflows/deploy-pages.yml) executa typecheck, lint, testes e build em pushes para `main`; após a validação, publica o conteúdo de `dist/`.
 
-## Estrutura
+## Estrutura do projeto
 
-- `src/index.html` e `src/pages/`: três páginas HTML independentes.
-- `src/domain/hydration.ts`: validação e motor de cálculo sem dependência do DOM.
-- `src/domain/hydration-comparison.ts`: conversão, validação e comparação matemática de água total, independente do DOM.
-- `src/content/comparison-education.ts`: conteúdo editorial estático para os três cenários comparativos.
-- `src/scripts/calculator.ts`: coleta dos formulários, formatação pt-BR e atualização dos resultados.
-- `src/scripts/main.ts`: entrada TypeScript da calculadora.
-- `src/css/`: estilos por página, cabeçalho compartilhado, tokens e transições de navegação.
-- `src/assets/`: marca, ilustrações e ícones SVG.
-- `src/public/_redirects`: regra de fallback copiada ao build para hospedagens Netlify.
-- `docs/`: arquitetura, método, conteúdo editorial, design, testes e roadmap.
+```text
+src/
+├── assets/                 Marca, ilustrações e ícones SVG
+├── content/                Conteúdo educativo e mensagens comparativas
+├── css/                    Estilos globais, componentes e páginas
+├── domain/                 Cálculo, validação e comparação independentes do DOM
+├── pages/                  Calculadora e conteúdo educativo
+├── scripts/                Entradas da aplicação, interface e idiomas
+└── index.html              Página inicial
+docs/                       Arquitetura, metodologia, design e testes
+```
 
-Os arquivos `src/scripts/index.js`, `src/scripts/models/waterCalculator.js` e algumas imagens em `src/assets/img/` pertencem ao projeto legado. Eles não são carregados pelo fluxo atual e permanecem preservados como referência; não fazem parte do bundle da versão atual.
+O motor de cálculo e a comparação ficam separados da camada visual, facilitando testes e manutenção. A preferência de idioma é transportada pela URL; dados preenchidos nos formulários não são enviados a uma API nem gravados em armazenamento local.
 
-## Publicação estática
+## Privacidade
 
-O Vite usa `src/` como raiz e gera um site de múltiplas páginas em `dist/`. Para hospedar, execute `npm run build` e configure a plataforma para servir o conteúdo de `dist/`. Não é necessária função, banco de dados ou variável de ambiente.
-
-Os links e assets usam caminhos relativos para funcionar sob o subdiretório `/j-water/` do GitHub Pages. O workflow em `.github/workflows/deploy-pages.yml` executa as verificações, gera o build de produção e publica `dist/` quando há push na branch `main`; também pode ser iniciado manualmente pela aba **Actions**. A publicação atual usa GitHub Actions como fonte do GitHub Pages. O arquivo `src/public/_redirects` é destinado a hospedagens Netlify.
-
-## Privacidade e segurança
-
-O cálculo é executado no navegador. Os dados do formulário não são enviados a uma API, gravados em armazenamento local ou mantidos após sair da página. A aplicação não implementa autenticação, analytics ou backend. Links externos são abertos apenas quando selecionados pelo visitante.
+O cálculo acontece no navegador. A aplicação não implementa contas, autenticação, histórico, analytics ou backend. Os dados digitados permanecem na página e não são salvos pelo J-WATER.
 
 ## Documentação
 
@@ -84,4 +87,4 @@ O cálculo é executado no navegador. Os dados do formulário não são enviados
 - [Sistema visual](docs/DESIGN-SYSTEM.md)
 - [Testes e validação](docs/TESTING.md)
 - [Roadmap](docs/ROADMAP.md)
-- [Changelog](docs/CHANGELOG.md)
+- [Histórico de alterações](docs/CHANGELOG.md)

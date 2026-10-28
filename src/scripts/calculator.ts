@@ -5,6 +5,7 @@ import {
   type HydrationComparison,
 } from "../domain/hydration-comparison";
 import { getComparisonEducation } from "../content/comparison-education";
+import { getCurrentLocale, translateText, type Locale } from "./i18n";
 
 export interface FormattedHydrationEstimate {
   liters: string;
@@ -30,34 +31,56 @@ export interface FormattedHydrationComparison {
   education: ReturnType<typeof getComparisonEducation>;
 }
 
-const formatNumber = (value: number, fractionDigits = 0): string =>
-  new Intl.NumberFormat("pt-BR", { maximumFractionDigits: fractionDigits }).format(value);
+const formatNumber = (value: number, fractionDigits = 0, locale: Locale = getCurrentLocale()): string =>
+  new Intl.NumberFormat(locale, { maximumFractionDigits: fractionDigits }).format(value);
 
-export function formatHydrationEstimate(estimate: HydrationEstimate): FormattedHydrationEstimate {
+export function formatHydrationEstimate(estimate: HydrationEstimate, locale: Locale = getCurrentLocale()): FormattedHydrationEstimate {
   const environment = estimate.environmentSource === "study-reference-scenario"
-    ? "Condições ambientais usadas: cenário-base do exemplo publicado (10 °C, 50% de umidade relativa, altitude 0 m). O modelo mantém fixa a categoria de país com IDH alto."
-    : `Condições ambientais informadas: ${formatNumber(estimate.temperatureC, 1)} °C, ${formatNumber(estimate.relativeHumidityPercent)}% de umidade relativa e altitude ${formatNumber(estimate.altitudeMeters)} m. O modelo mantém fixa a categoria de país com IDH alto.`;
+    ? locale === "en"
+      ? "Environmental conditions used: the reference scenario from the published example (10 °C, 50% relative humidity, 0 m altitude). The model keeps the high-HDI country category fixed."
+      : "Condições ambientais usadas: cenário-base do exemplo publicado (10 °C, 50% de umidade relativa, altitude 0 m). O modelo mantém fixa a categoria de país com IDH alto."
+    : locale === "en"
+      ? `Environmental conditions entered: ${formatNumber(estimate.temperatureC, 1, locale)} °C, ${formatNumber(estimate.relativeHumidityPercent, 0, locale)}% relative humidity, and ${formatNumber(estimate.altitudeMeters, 0, locale)} m altitude. The model keeps the high-HDI country category fixed.`
+      : `Condições ambientais informadas: ${formatNumber(estimate.temperatureC, 1, locale)} °C, ${formatNumber(estimate.relativeHumidityPercent, 0, locale)}% de umidade relativa e altitude ${formatNumber(estimate.altitudeMeters, 0, locale)} m. O modelo mantém fixa a categoria de país com IDH alto.`;
 
   return {
-    liters: formatNumber(estimate.dailyTotalWaterLiters, 2),
-    milliliters: formatNumber(estimate.dailyTotalWaterMl),
-    cups: formatNumber(estimate.cupEquivalent),
-    populationReference: `${formatNumber(estimate.populationReferenceMl)} ml/dia`,
+    liters: formatNumber(estimate.dailyTotalWaterLiters, 2, locale),
+    milliliters: formatNumber(estimate.dailyTotalWaterMl, 0, locale),
+    cups: formatNumber(estimate.cupEquivalent, 0, locale),
+    populationReference: `${formatNumber(estimate.populationReferenceMl, 0, locale)} ml${locale === "en" ? "/day" : "/dia"}`,
     environment,
   };
 }
 
-export function formatHydrationComparison(comparison: HydrationComparison): FormattedHydrationComparison {
+export function formatHydrationComparison(comparison: HydrationComparison, locale: Locale = getCurrentLocale()): FormattedHydrationComparison {
   const maximumMl = Math.max(comparison.estimateMl, comparison.reportedMl);
-  const estimateLiters = formatNumber(comparison.estimateMl / 1_000, 2);
-  const reportedLiters = formatNumber(comparison.reportedMl / 1_000, 2);
-  const maximumLiters = formatNumber(maximumMl / 1_000, 2);
-  const differenceDirection = comparison.differenceMl < 0 ? "abaixo" : "acima";
+  const estimateLiters = formatNumber(comparison.estimateMl / 1_000, 2, locale);
+  const reportedLiters = formatNumber(comparison.reportedMl / 1_000, 2, locale);
+  const maximumLiters = formatNumber(maximumMl / 1_000, 2, locale);
+  const differenceDirection = comparison.differenceMl < 0 ? (locale === "en" ? "below" : "abaixo") : (locale === "en" ? "above" : "acima");
   const difference = comparison.differenceMl === 0
-    ? "Consumo equivalente à estimativa"
-    : `${formatNumber(comparison.absoluteDifferenceMl)} ml ${differenceDirection} da estimativa`;
+    ? locale === "en" ? "Intake matches the estimate" : "Consumo equivalente à estimativa"
+    : locale === "en"
+      ? `${formatNumber(comparison.absoluteDifferenceMl, 0, locale)} ml ${differenceDirection} the estimate`
+      : `${formatNumber(comparison.absoluteDifferenceMl, 0, locale)} ml ${differenceDirection} da estimativa`;
 
-  const scenarioContent = {
+  const scenarioContent = (locale === "en" ? {
+    below: {
+      title: "Intake below the estimate",
+      message: "The total water you reported is below the calculated estimate. This mathematical difference does not confirm dehydration or assess your health.",
+      symbol: "↓",
+    },
+    near: {
+      title: "Intake close to the estimate",
+      message: "The values are close within the 250 ml visual comparison tolerance. This does not confirm adequate hydration or represent a medical safety range.",
+      symbol: "≈",
+    },
+    above: {
+      title: "Intake above the estimate",
+      message: "The total water you reported is above the estimate. This is not necessarily a problem; drinking more does not mean unlimited added benefit.",
+      symbol: "↑",
+    },
+  } : {
     below: {
       title: "Consumo abaixo da estimativa",
       message: "O total de água que você informou ficou abaixo da estimativa calculada. Essa diferença matemática não comprova desidratação nem avalia seu estado de saúde.",
@@ -73,22 +96,22 @@ export function formatHydrationComparison(comparison: HydrationComparison): Form
       message: "O total de água que você informou ficou acima da estimativa. Isso não representa necessariamente um problema; consumir mais não significa obter benefícios adicionais de forma ilimitada.",
       symbol: "↑",
     },
-  }[comparison.scenario];
+  })[comparison.scenario];
 
   return {
     estimateLiters,
     reportedLiters,
     difference,
-    percentage: `${formatNumber(comparison.percentage, 1)}%`,
+    percentage: `${formatNumber(comparison.percentage, 1, locale)}%`,
     maximumLiters,
     estimateLevel: `${((comparison.estimateMl / maximumMl) * 100).toFixed(2)}%`,
     reportedLevel: `${((comparison.reportedMl / maximumMl) * 100).toFixed(2)}%`,
-    estimateAccessibleLabel: `Estimativa J-WATER: ${estimateLiters} litros; escala máxima ${maximumLiters} litros.`,
-    reportedAccessibleLabel: `Consumo total informado: ${reportedLiters} litros; escala máxima ${maximumLiters} litros.`,
+    estimateAccessibleLabel: locale === "en" ? `J-WATER estimate: ${estimateLiters} litres; scale maximum ${maximumLiters} litres.` : `Estimativa J-WATER: ${estimateLiters} litros; escala máxima ${maximumLiters} litros.`,
+    reportedAccessibleLabel: locale === "en" ? `Reported total intake: ${reportedLiters} litres; scale maximum ${maximumLiters} litres.` : `Consumo total informado: ${reportedLiters} litros; escala máxima ${maximumLiters} litros.`,
     scenarioTitle: scenarioContent.title,
     scenarioMessage: scenarioContent.message,
     scenarioSymbol: scenarioContent.symbol,
-    education: getComparisonEducation(comparison.scenario),
+    education: getComparisonEducation(comparison.scenario, locale),
   };
 }
 
@@ -144,6 +167,8 @@ export function initializeHydrationCalculator(root: Document = document): void {
   ) return;
 
   let currentEstimateMl: number | undefined;
+  let lastEstimate: HydrationEstimate | undefined;
+  let lastComparison: HydrationComparison | undefined;
 
   const renderEntryMode = (): void => {
     const useCups = cupsModeInput.checked;
@@ -225,6 +250,18 @@ export function initializeHydrationCalculator(root: Document = document): void {
     comparisonResult.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "nearest" });
   };
 
+  root.addEventListener("jwater:localechange", () => {
+    if (lastEstimate && !resultPanel.hidden) {
+      const display = formatHydrationEstimate(lastEstimate);
+      litersOutput.textContent = display.liters;
+      millilitersOutput.textContent = display.milliliters;
+      cupsOutput.textContent = display.cups;
+      populationReferenceOutput.textContent = display.populationReference;
+      environmentOutput.textContent = display.environment;
+    }
+    if (lastComparison && !comparisonResult.hidden) updateComparison(lastComparison);
+  });
+
   renderEntryMode();
   volumeModeInput.addEventListener("change", renderEntryMode);
   cupsModeInput.addEventListener("change", renderEntryMode);
@@ -235,7 +272,7 @@ export function initializeHydrationCalculator(root: Document = document): void {
   comparisonForm.addEventListener("submit", (event) => {
     event.preventDefault();
     if (currentEstimateMl === undefined) {
-      revealError("Calcule primeiro sua estimativa J-WATER para comparar os valores.");
+      revealError(translateText("Calcule primeiro sua estimativa J-WATER para comparar os valores."));
       return;
     }
 
@@ -254,16 +291,17 @@ export function initializeHydrationCalculator(root: Document = document): void {
         : normalizeHydrationIntake({ mode });
 
     if (!normalizedIntake.ok) {
-      revealError(normalizedIntake.errors[0]?.message ?? "Revise os dados do consumo informado.", normalizedIntake.errors[0]?.field);
+      revealError(translateText(normalizedIntake.errors[0]?.message ?? "Revise os dados do consumo informado."), normalizedIntake.errors[0]?.field);
       return;
     }
 
     const comparison = compareHydrationIntake(currentEstimateMl, normalizedIntake.volumeMl);
     if (!comparison.ok) {
-      revealError(comparison.errors[0]?.message ?? "Não foi possível comparar esses valores.", comparison.errors[0]?.field);
+      revealError(translateText(comparison.errors[0]?.message ?? "Não foi possível comparar esses valores."), comparison.errors[0]?.field);
       return;
     }
 
+    lastComparison = comparison.comparison;
     updateComparison(comparison.comparison);
   });
 
@@ -293,13 +331,14 @@ export function initializeHydrationCalculator(root: Document = document): void {
     });
 
     if (!calculation.ok) {
-      formError.textContent = calculation.errors[0]?.message ?? "Revise os campos do formulário.";
+      formError.textContent = translateText(calculation.errors[0]?.message ?? "Revise os campos do formulário.");
       formError.hidden = false;
       formError.focus();
       return;
     }
 
     formError.hidden = true;
+    lastEstimate = calculation.estimate;
     const display = formatHydrationEstimate(calculation.estimate);
     litersOutput.textContent = display.liters;
     millilitersOutput.textContent = display.milliliters;
@@ -318,6 +357,8 @@ export function initializeHydrationCalculator(root: Document = document): void {
   newCalculationButton.addEventListener("click", () => {
     form.reset();
     resetComparison();
+    lastEstimate = undefined;
+    lastComparison = undefined;
     formError.hidden = true;
     resultPanel.hidden = true;
     root.querySelector<HTMLInputElement>("#age-years")?.focus();

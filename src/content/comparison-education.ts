@@ -1,4 +1,5 @@
 import type { HydrationComparison } from "../domain/hydration-comparison";
+import type { Locale } from "../scripts/i18n";
 
 export interface ComparisonEducation {
   heading: string;
@@ -51,6 +52,49 @@ const comparisonEducation: Record<HydrationComparison["scenario"], ComparisonEdu
   },
 };
 
-export function getComparisonEducation(scenario: HydrationComparison["scenario"]): ComparisonEducation {
-  return comparisonEducation[scenario];
+const englishEducation: Record<HydrationComparison["scenario"], ComparisonEducation> = {
+  below: {
+    heading: "What this difference can and cannot tell you",
+    introduction: "In some situations involving insufficient fluid intake or fluid loss, people may experience thirst, dry mouth, darker or less frequent urine, tiredness, headache, or dizziness. These signs have many possible causes and cannot be inferred from the difference calculated here.",
+    points: [
+      "This comparison does not confirm dehydration or explain symptoms. Hydration status depends on context and, when needed, professional assessment.",
+      "Heat, exercise, fever, vomiting, diarrhea, and some medicines can change fluid losses; this comparison does not estimate those effects.",
+    ],
+    practicalHeading: "Simple ways to notice your routine",
+    practicalTips: [
+      "Keep a drink within reach and use breaks or meals as a chance to drink, without following a rigid schedule.",
+      "In hot weather or during physical activity, consider the context and fluid losses; avoid trying to compensate by drinking a large amount at once.",
+      "Notice thirst and persistent changes in your routine as clues, not diagnostic tests.",
+    ],
+  },
+  near: {
+    heading: "The role of water in the body",
+    introduction: "Water supports normal physiological functions: it helps transport substances, maintain circulating volume, remove waste, and balance body temperature.",
+    points: [
+      "Being close to the calculated number does not prove adequate hydration. The estimate and reported intake are approximations of total water from beverages and food.",
+      "Needs vary with activity, environment, and health. For people who are already adequately hydrated, drinking beyond their needs does not guarantee more energy, focus, or performance.",
+    ],
+    practicalHeading: "For a flexible routine",
+    practicalTips: [
+      "Keep drinks available and adapt your habits to the weather, activities, and professional guidance you have received.",
+      "Thirst and urine colour can be useful observations, but neither determines hydration status on its own.",
+    ],
+  },
+  above: {
+    heading: "More water does not always mean more benefit",
+    introduction: "A reported total above the estimate does not, by itself, indicate a problem or an added benefit. This comparison only describes the distance between two approximate numbers.",
+    points: [
+      "Drinking a large volume in a short time can be dangerous. During prolonged exercise, excessive water intake is associated with a risk of hyponatremia, a change in blood sodium.",
+      "Do not force fluids to exceed the estimate. Needs depend on context, and this tool does not provide individual safety limits.",
+    ],
+    practicalHeading: "A balanced perspective",
+    practicalTips: [
+      "Consider your overall routine, including beverages and water in food, rather than pursuing a higher number for its own sake.",
+      "During prolonged activity, intense heat, or symptoms, follow guidance appropriate to the situation; this calculator does not replace professional advice.",
+    ],
+  },
+};
+
+export function getComparisonEducation(scenario: HydrationComparison["scenario"], locale: Locale = "pt-BR"): ComparisonEducation {
+  return (locale === "en" ? englishEducation : comparisonEducation)[scenario];
 }
